@@ -1,0 +1,6 @@
+framework module Pods_RAMSport {
+  umbrella header "Pods-RAMSport-umbrella.h"
+
+  export *
+  module * { export * }
+}

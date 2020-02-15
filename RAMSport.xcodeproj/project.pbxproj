@@ -3,31 +3,65 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5523F434EB0055E981 /* AppDelegate.swift */; };
-		41548F5823F434EB0055E981 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5723F434EB0055E981 /* SceneDelegate.swift */; };
-		41548F5A23F434EB0055E981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* ViewController.swift */; };
+		41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* RAMSportMainController.swift */; };
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
 		41548F5F23F434EE0055E981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5E23F434EE0055E981 /* Assets.xcassets */; };
 		41548F6223F434EE0055E981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F6023F434EE0055E981 /* LaunchScreen.storyboard */; };
+		41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */; };
+		41A7400223F67790008637CD /* RAMGPXModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7400123F67790008637CD /* RAMGPXModel.swift */; };
+		41A7400423F67CC6008637CD /* letoursport30.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41A7400323F67CC6008637CD /* letoursport30.gpx */; };
+		41A7400C23F68767008637CD /* RAMSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7400B23F68767008637CD /* RAMSportTests.swift */; };
+		41D257A323F57D520028B094 /* letoursport8.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41D257A223F57D520028B094 /* letoursport8.gpx */; };
+		41D257A523F57EF60028B094 /* rencai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41D257A423F57EF60028B094 /* rencai.gpx */; };
+		A16B35482E1BAEBBB32BC3FF /* Pods_RAMSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33909F8680AFA7B13912EBEB /* Pods_RAMSport.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		41A7400E23F68767008637CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41548F4A23F434EB0055E981 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41548F5123F434EB0055E981;
+			remoteInfo = RAMSport;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		33909F8680AFA7B13912EBEB /* Pods_RAMSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RAMSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5223F434EB0055E981 /* RAMSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5523F434EB0055E981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41548F5723F434EB0055E981 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		41548F5923F434EB0055E981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		41548F5923F434EB0055E981 /* RAMSportMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainController.swift; sourceTree = "<group>"; };
 		41548F5C23F434EB0055E981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41548F5E23F434EE0055E981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41548F6123F434EE0055E981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41548F6323F434EE0055E981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXAnalysis.swift; sourceTree = "<group>"; };
+		41A7400123F67790008637CD /* RAMGPXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXModel.swift; sourceTree = "<group>"; };
+		41A7400323F67CC6008637CD /* letoursport30.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = letoursport30.gpx; sourceTree = "<group>"; };
+		41A7400923F68767008637CD /* RAMSportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAMSportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A7400B23F68767008637CD /* RAMSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportTests.swift; sourceTree = "<group>"; };
+		41A7400D23F68767008637CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41D257A223F57D520028B094 /* letoursport8.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = letoursport8.gpx; sourceTree = "<group>"; };
+		41D257A423F57EF60028B094 /* rencai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = rencai.gpx; sourceTree = "<group>"; };
+		767F4668AE904DA05EBE4748 /* Pods-RAMSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RAMSport.release.xcconfig"; path = "Target Support Files/Pods-RAMSport/Pods-RAMSport.release.xcconfig"; sourceTree = "<group>"; };
+		7B733B656961DB7E32C8795E /* Pods-RAMSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RAMSport.debug.xcconfig"; path = "Target Support Files/Pods-RAMSport/Pods-RAMSport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		41548F4F23F434EB0055E981 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A16B35482E1BAEBBB32BC3FF /* Pods_RAMSport.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41A7400623F68767008637CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,7 +75,10 @@
 			isa = PBXGroup;
 			children = (
 				41548F5423F434EB0055E981 /* RAMSport */,
+				41A7400A23F68767008637CD /* RAMSportTests */,
 				41548F5323F434EB0055E981 /* Products */,
+				66F7AA68ABC25BE10BE5C78D /* Pods */,
+				7D64FBC29E999FEC44431B83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				41548F5223F434EB0055E981 /* RAMSport.app */,
+				41A7400923F68767008637CD /* RAMSportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,14 +95,44 @@
 			isa = PBXGroup;
 			children = (
 				41548F5523F434EB0055E981 /* AppDelegate.swift */,
-				41548F5723F434EB0055E981 /* SceneDelegate.swift */,
-				41548F5923F434EB0055E981 /* ViewController.swift */,
+				41548F5923F434EB0055E981 /* RAMSportMainController.swift */,
+				41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */,
+				41A7400123F67790008637CD /* RAMGPXModel.swift */,
+				41D257A223F57D520028B094 /* letoursport8.gpx */,
+				41A7400323F67CC6008637CD /* letoursport30.gpx */,
+				41D257A423F57EF60028B094 /* rencai.gpx */,
 				41548F5B23F434EB0055E981 /* Main.storyboard */,
 				41548F5E23F434EE0055E981 /* Assets.xcassets */,
 				41548F6023F434EE0055E981 /* LaunchScreen.storyboard */,
 				41548F6323F434EE0055E981 /* Info.plist */,
 			);
 			path = RAMSport;
+			sourceTree = "<group>";
+		};
+		41A7400A23F68767008637CD /* RAMSportTests */ = {
+			isa = PBXGroup;
+			children = (
+				41A7400B23F68767008637CD /* RAMSportTests.swift */,
+				41A7400D23F68767008637CD /* Info.plist */,
+			);
+			path = RAMSportTests;
+			sourceTree = "<group>";
+		};
+		66F7AA68ABC25BE10BE5C78D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B733B656961DB7E32C8795E /* Pods-RAMSport.debug.xcconfig */,
+				767F4668AE904DA05EBE4748 /* Pods-RAMSport.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7D64FBC29E999FEC44431B83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33909F8680AFA7B13912EBEB /* Pods_RAMSport.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41548F6623F434EE0055E981 /* Build configuration list for PBXNativeTarget "RAMSport" */;
 			buildPhases = (
+				4D017A6A1FCE65CB84F77F24 /* [CP] Check Pods Manifest.lock */,
 				41548F4E23F434EB0055E981 /* Sources */,
 				41548F4F23F434EB0055E981 /* Frameworks */,
 				41548F5023F434EB0055E981 /* Resources */,
+				789F0C1746646037B95EF7E7 /* [CP] Copy Pods Resources */,
+				5616AFA14C777F5C27680F2D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -86,6 +157,24 @@
 			productName = RAMSport;
 			productReference = 41548F5223F434EB0055E981 /* RAMSport.app */;
 			productType = "com.apple.product-type.application";
+		};
+		41A7400823F68767008637CD /* RAMSportTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41A7401023F68767008637CD /* Build configuration list for PBXNativeTarget "RAMSportTests" */;
+			buildPhases = (
+				41A7400523F68767008637CD /* Sources */,
+				41A7400623F68767008637CD /* Frameworks */,
+				41A7400723F68767008637CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41A7400F23F68767008637CD /* PBXTargetDependency */,
+			);
+			name = RAMSportTests;
+			productName = RAMSportTests;
+			productReference = 41A7400923F68767008637CD /* RAMSportTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -99,6 +188,10 @@
 				TargetAttributes = {
 					41548F5123F434EB0055E981 = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					41A7400823F68767008637CD = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 41548F5123F434EB0055E981;
 					};
 				};
 			};
@@ -116,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				41548F5123F434EB0055E981 /* RAMSport */,
+				41A7400823F68767008637CD /* RAMSportTests */,
 			);
 		};
 /* End PBXProject section */
@@ -125,26 +219,112 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A7400423F67CC6008637CD /* letoursport30.gpx in Resources */,
+				41D257A323F57D520028B094 /* letoursport8.gpx in Resources */,
 				41548F6223F434EE0055E981 /* LaunchScreen.storyboard in Resources */,
 				41548F5F23F434EE0055E981 /* Assets.xcassets in Resources */,
 				41548F5D23F434EB0055E981 /* Main.storyboard in Resources */,
+				41D257A523F57EF60028B094 /* rencai.gpx in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41A7400723F68767008637CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D017A6A1FCE65CB84F77F24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RAMSport-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5616AFA14C777F5C27680F2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		789F0C1746646037B95EF7E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RAMSport/Pods-RAMSport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41548F4E23F434EB0055E981 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41548F5A23F434EB0055E981 /* ViewController.swift in Sources */,
+				41A7400223F67790008637CD /* RAMGPXModel.swift in Sources */,
+				41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */,
+				41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
-				41548F5823F434EB0055E981 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41A7400523F68767008637CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41A7400C23F68767008637CD /* RAMSportTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41A7400F23F68767008637CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41548F5123F434EB0055E981 /* RAMSport */;
+			targetProxy = 41A7400E23F68767008637CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		41548F5B23F434EB0055E981 /* Main.storyboard */ = {
@@ -282,11 +462,13 @@
 		};
 		41548F6723F434EE0055E981 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B733B656961DB7E32C8795E /* Pods-RAMSport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MEEVZF39DJ;
 				INFOPLIST_FILE = RAMSport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +482,13 @@
 		};
 		41548F6823F434EE0055E981 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 767F4668AE904DA05EBE4748 /* Pods-RAMSport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MEEVZF39DJ;
 				INFOPLIST_FILE = RAMSport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +497,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		41A7401123F68767008637CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MEEVZF39DJ;
+				INFOPLIST_FILE = RAMSportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rambo.RAMSportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMSport.app/RAMSport";
+			};
+			name = Debug;
+		};
+		41A7401223F68767008637CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MEEVZF39DJ;
+				INFOPLIST_FILE = RAMSportTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rambo.RAMSportTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RAMSport.app/RAMSport";
 			};
 			name = Release;
 		};
@@ -333,6 +557,15 @@
 			buildConfigurations = (
 				41548F6723F434EE0055E981 /* Debug */,
 				41548F6823F434EE0055E981 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41A7401023F68767008637CD /* Build configuration list for PBXNativeTarget "RAMSportTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41A7401123F68767008637CD /* Debug */,
+				41A7401223F68767008637CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

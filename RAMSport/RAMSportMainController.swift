@@ -14,18 +14,21 @@ import SWXMLHash
 class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    lazy var locationManager: CLLocationManager = CLLocationManager()
+    
+    lazy var locationManager: CLLocationManager = {
+        let locationM = CLLocationManager()
+        locationM.desiredAccuracy = kCLLocationAccuracyBest
+        locationM.distanceFilter = 1.0
+        locationM.delegate = self
+        locationM.allowsBackgroundLocationUpdates = true
+        return locationM
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyClearNavigationBarStyle()
         
-//        mapView.setCenter(CLLocationCoordinate2DMake(30.1972714600,120.2244975600), animated: true)
-        
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.distanceFilter = 1.0
-//        locationManager.delegate = self
-//        locationManager.allowsBackgroundLocationUpdates = true
-//
+//        navigationController?.navigationBar.set
 //        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
 //        switch status {
 //        case .notDetermined:
@@ -39,43 +42,24 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
 //        }
 //        locationManager.startUpdatingLocation()
         
+//        let mainQueue = DispatchQueue.main
+//        mainQueue.asyncAfter(deadline: .now() + 3) {
+//            self.locateUserLocation()
+//        }
+        
+        
     }
-
-    @IBAction func resetLocationAction(_ sender: UIButton) {
-        
-//        mapView.setCenter(mapView.userLocation.coordinate, animated: true)
-        
-        let xmlAnalysis = RAMGPXAnalysis()
-        let xml = xmlAnalysis.xml
-        let allTrkpt: [XMLIndexer] = xml!["gpx"]["trk"]["trkseg"]["trkpt"].all
-
-        let startPoint = MKPointAnnotation()
-        var lat: String = allTrkpt.first?.element?.attribute(by: "lat")?.text ?? "0"
-        var lon: String = allTrkpt.first?.element?.attribute(by: "lon")?.text ?? "0"
-        startPoint.coordinate = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
-        startPoint.title = "start"
-        mapView.addAnnotation(startPoint)
-
-        let endPoint = MKPointAnnotation()
-        lat = allTrkpt.first?.element?.attribute(by: "lat")?.text ?? "0"
-        lon = allTrkpt.first?.element?.attribute(by: "lon")?.text ?? "0"
-        endPoint.coordinate = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
-        endPoint.title = "end"
-        mapView.addAnnotation(endPoint)
-
-        var points:[CLLocationCoordinate2D] = []
-        for xmlIndexer in allTrkpt {
-            lat = xmlIndexer.element?.attribute(by: "lat")?.text ?? "0"
-            lon = xmlIndexer.element?.attribute(by: "lon")?.text ?? "0"
-            points.append(CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!))
-        }
-
-        let polylines: MKPolyline = MKPolyline(coordinates: &points, count: points.count)
-        mapView.addOverlay(polylines)
-        let region: MKCoordinateRegion = MKCoordinateRegion(center: startPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ram_statusBarStyle
+    }
+    
+    func locateUserLocation() {
+//        lat="30.602198" lon="119.868523"
+        let userLocation = self.mapView.userLocation.coordinate
+//        mapView.setCenter(userLocation, animated: true)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
-        
-        
     }
     
     @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
@@ -83,19 +67,34 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
         mapView.mapType = mapType
     }
     
+    @IBAction func startSport(_ sender: UIButton) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pathRecord" {
+            if let vc = segue.destination as? RAMPathRecordController {
+                vc.mapView = mapView
+            }
+        }
+    }
+    
     
     // MARK: - MKMapViewDelegate
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        print("lang: \(userLocation.coordinate.latitude), long: \(userLocation.coordinate.longitude)")
+        print("mapView:didUpdate: - lang: \(userLocation.coordinate.latitude), long: \(userLocation.coordinate.longitude)")
+        
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // ------- 自带的大头针-----
-        var annotationView: MKPinAnnotationView!
-        if let annotationViewTmp: MKPinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "PIN") as? MKPinAnnotationView {
+        var annotationView: MKMarkerAnnotationView!
+        if let annotationViewTmp: MKMarkerAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "PIN") as? MKMarkerAnnotationView {
             annotationView = annotationViewTmp
         } else {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PIN")
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN")
         }
 //             UIImageView *imageView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
 //
@@ -104,7 +103,7 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
 //            annotationView.leftCalloutAccessoryView=imageView;
 
         annotationView.canShowCallout = true;
-        annotationView.animatesDrop = true;
+//        annotationView.animatesDrop = true;
 
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30));
 
@@ -112,7 +111,7 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
         
         annotationView.rightCalloutAccessoryView = label;
 
-        annotationView.pinTintColor = .purple;
+//        annotationView.pinTintColor = .purple;
 
         return annotationView;
 
@@ -160,6 +159,7 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("locationManager:didUpdateLocations: - lang: \(locations.first?.coordinate.latitude), long: \(locations.first?.coordinate.longitude)")
 //        let location: CLLocation! = locations.last
 //        //设置region---就是设置地图缩放 1°约等于111KM
 //        let region: MKCoordinateRegion = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))

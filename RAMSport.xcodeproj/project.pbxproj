@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4121B06723F90C4C002CF1DA /* RAMPathRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06623F90C4C002CF1DA /* RAMPathRecordController.swift */; };
+		4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06823F90C6F002CF1DA /* RAMUserController.swift */; };
+		4121B06B23F90C96002CF1DA /* RAMUserRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */; };
+		4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06D23F971B7002CF1DA /* RAMNavigator.swift */; };
+		4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07023F9796E002CF1DA /* RAMUtil.swift */; };
 		41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5523F434EB0055E981 /* AppDelegate.swift */; };
 		41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* RAMSportMainController.swift */; };
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
@@ -33,6 +38,11 @@
 
 /* Begin PBXFileReference section */
 		33909F8680AFA7B13912EBEB /* Pods_RAMSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RAMSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4121B06623F90C4C002CF1DA /* RAMPathRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMPathRecordController.swift; sourceTree = "<group>"; };
+		4121B06823F90C6F002CF1DA /* RAMUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUserController.swift; sourceTree = "<group>"; };
+		4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUserRecordController.swift; sourceTree = "<group>"; };
+		4121B06D23F971B7002CF1DA /* RAMNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMNavigator.swift; sourceTree = "<group>"; };
+		4121B07023F9796E002CF1DA /* RAMUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUtil.swift; sourceTree = "<group>"; };
 		41548F5223F434EB0055E981 /* RAMSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5523F434EB0055E981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41548F5923F434EB0055E981 /* RAMSportMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainController.swift; sourceTree = "<group>"; };
@@ -71,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4121B06C23F97189002CF1DA /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				4121B06D23F971B7002CF1DA /* RAMNavigator.swift */,
+			);
+			name = Navigator;
+			sourceTree = "<group>";
+		};
+		4121B06F23F97952002CF1DA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4121B07023F9796E002CF1DA /* RAMUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		41548F4923F434EB0055E981 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +124,11 @@
 				41548F5923F434EB0055E981 /* RAMSportMainController.swift */,
 				41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */,
 				41A7400123F67790008637CD /* RAMGPXModel.swift */,
+				4121B06623F90C4C002CF1DA /* RAMPathRecordController.swift */,
+				4121B06823F90C6F002CF1DA /* RAMUserController.swift */,
+				4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */,
+				4121B06F23F97952002CF1DA /* Util */,
+				4121B06C23F97189002CF1DA /* Navigator */,
 				41D257A223F57D520028B094 /* letoursport8.gpx */,
 				41A7400323F67CC6008637CD /* letoursport30.gpx */,
 				41D257A423F57EF60028B094 /* rencai.gpx */,
@@ -301,10 +332,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */,
 				41A7400223F67790008637CD /* RAMGPXModel.swift in Sources */,
+				4121B06723F90C4C002CF1DA /* RAMPathRecordController.swift in Sources */,
 				41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */,
 				41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */,
+				4121B06B23F90C96002CF1DA /* RAMUserRecordController.swift in Sources */,
+				4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
+				4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

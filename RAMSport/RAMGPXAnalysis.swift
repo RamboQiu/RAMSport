@@ -30,10 +30,10 @@ class RAMGPXAnalysis: NSObject, XMLParserDelegate {
     override init() {
         super.init()
 #if SWIFT_PACKAGE
-        let path = NSString.path(withComponents: NSString(string: #file).pathComponents.dropLast() + ["letoursport8.gpx"])
+        let path = NSString.path(withComponents: NSString(string: #file).pathComponents.dropLast() + ["letoursport30.gpx"])
 #else
         let bundle = Bundle(for: RAMGPXAnalysis.self)
-        let path = bundle.path(forResource: "letoursport8", ofType: "gpx")!
+        let path = bundle.path(forResource: "letoursport30", ofType: "gpx")!
 #endif
         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
         xml = SWXMLHash.lazy(data)

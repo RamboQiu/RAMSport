@@ -11,22 +11,24 @@ import CoreLocation
 import MapKit
 import SWXMLHash
 
-class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
+class RAMSportMainController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    
-    lazy var locationManager: CLLocationManager = {
-        let locationM = CLLocationManager()
-        locationM.desiredAccuracy = kCLLocationAccuracyBest
-        locationM.distanceFilter = 1.0
-        locationM.delegate = self
-        locationM.allowsBackgroundLocationUpdates = true
-        return locationM
-    }()
+    @IBOutlet weak var headImageView: UIImageView!
+    @IBOutlet weak var centerCircleView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         applyClearNavigationBarStyle()
+        
+        
+        headImageView.layer.cornerRadius = headImageView.width / 2
+        centerCircleView.layer.cornerRadius = centerCircleView.width / 2
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startSport(_:)))
+        centerCircleView.addGestureRecognizer(tapGesture)
+        
+//        headImageView.frame.mi
         
 //        navigationController?.navigationBar.set
 //        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -67,8 +69,8 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
         mapView.mapType = mapType
     }
     
-    @IBAction func startSport(_ sender: UIButton) {
-        
+    @objc func startSport(_ tapGesture: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "running", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,75 +88,6 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate, CLLocationMan
         
         let region: MKCoordinateRegion = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
-    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        // ------- 自带的大头针-----
-        var annotationView: MKMarkerAnnotationView!
-        if let annotationViewTmp: MKMarkerAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "PIN") as? MKMarkerAnnotationView {
-            annotationView = annotationViewTmp
-        } else {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN")
-        }
-//             UIImageView *imageView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
-//
-//            imageView.frame=CGRectMake(0,0,50,50);
-//
-//            annotationView.leftCalloutAccessoryView=imageView;
-
-        annotationView.canShowCallout = true;
-//        annotationView.animatesDrop = true;
-
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30));
-
-        label.text = ">>";
-        
-        annotationView.rightCalloutAccessoryView = label;
-
-//        annotationView.pinTintColor = .purple;
-
-        return annotationView;
-
-//         自定义大头针-------
-
-//          static NSString *pinId = "pinID";
-//
-//          MKAnnotationView *annoView = [mapView  dequeueReusableAnnotationViewWithIdentifier:pinId];
-//
-//          if (annoView == nil) {
-//
-//        annoView = [[MKAnnotationView alloc] initWithAnnotation:annotation  reuseIdentifier:pinId];
-//
-//          }
-//
-//        annoView.annotation = annotation;
-//
-//          annoView.image = [UIImage imageNamed:@"2.jpg"];
-//
-//        annoView.canShowCallout = YES;
-//
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2.jpg"]];
-//
-//        imageView.bounds = CGRectMake(0, 0, 44, 44);
-//
-//        annoView.leftCalloutAccessoryView = imageView;    imageView.userInteractionEnabled  = YES;
-//
-//                UIImageView *imageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2.jpg"]];
-//
-//          imageView2.bounds = CGRectMake(0, 0, 44, 44);
-//
-//            annoView.rightCalloutAccessoryView = imageView2;
-//
-//          annoView.draggable = YES;
-//
-//          return annoView;
-    }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let lineRenderer = MKPolylineRenderer(overlay: overlay)
-        lineRenderer.strokeColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        lineRenderer.lineWidth = 2
-        return lineRenderer
     }
     
     // MARK: - CLLocationManagerDelegate

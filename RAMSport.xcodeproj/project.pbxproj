@@ -12,6 +12,10 @@
 		4121B06B23F90C96002CF1DA /* RAMUserRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */; };
 		4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06D23F971B7002CF1DA /* RAMNavigator.swift */; };
 		4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07023F9796E002CF1DA /* RAMUtil.swift */; };
+		4121B07423FA648C002CF1DA /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */; };
+		4121B07623FA70C2002CF1DA /* RAMRunningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07523FA70C2002CF1DA /* RAMRunningController.swift */; };
+		4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */; };
+		4121B07A23FA79FD002CF1DA /* RAMRunningDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */; };
 		41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5523F434EB0055E981 /* AppDelegate.swift */; };
 		41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* RAMSportMainController.swift */; };
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
@@ -43,6 +47,11 @@
 		4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUserRecordController.swift; sourceTree = "<group>"; };
 		4121B06D23F971B7002CF1DA /* RAMNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMNavigator.swift; sourceTree = "<group>"; };
 		4121B07023F9796E002CF1DA /* RAMUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUtil.swift; sourceTree = "<group>"; };
+		4121B07223FA2ED9002CF1DA /* run.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = run.gpx; sourceTree = "<group>"; };
+		4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		4121B07523FA70C2002CF1DA /* RAMRunningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningController.swift; sourceTree = "<group>"; };
+		4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningMapController.swift; sourceTree = "<group>"; };
+		4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningDetailController.swift; sourceTree = "<group>"; };
 		41548F5223F434EB0055E981 /* RAMSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5523F434EB0055E981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41548F5923F434EB0055E981 /* RAMSportMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainController.swift; sourceTree = "<group>"; };
@@ -93,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4121B07023F9796E002CF1DA /* RAMUtil.swift */,
+				4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -127,11 +137,15 @@
 				4121B06623F90C4C002CF1DA /* RAMPathRecordController.swift */,
 				4121B06823F90C6F002CF1DA /* RAMUserController.swift */,
 				4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */,
+				4121B07523FA70C2002CF1DA /* RAMRunningController.swift */,
+				4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */,
+				4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */,
 				4121B06F23F97952002CF1DA /* Util */,
 				4121B06C23F97189002CF1DA /* Navigator */,
 				41D257A223F57D520028B094 /* letoursport8.gpx */,
 				41A7400323F67CC6008637CD /* letoursport30.gpx */,
 				41D257A423F57EF60028B094 /* rencai.gpx */,
+				4121B07223FA2ED9002CF1DA /* run.gpx */,
 				41548F5B23F434EB0055E981 /* Main.storyboard */,
 				41548F5E23F434EE0055E981 /* Assets.xcassets */,
 				41548F6023F434EE0055E981 /* LaunchScreen.storyboard */,
@@ -333,14 +347,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */,
+				4121B07A23FA79FD002CF1DA /* RAMRunningDetailController.swift in Sources */,
 				41A7400223F67790008637CD /* RAMGPXModel.swift in Sources */,
 				4121B06723F90C4C002CF1DA /* RAMPathRecordController.swift in Sources */,
 				41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */,
 				41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */,
 				4121B06B23F90C96002CF1DA /* RAMUserRecordController.swift in Sources */,
 				4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */,
+				4121B07623FA70C2002CF1DA /* RAMRunningController.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
+				4121B07423FA648C002CF1DA /* UIViewFrameExtension.swift in Sources */,
 				4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */,
+				4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

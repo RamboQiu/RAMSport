@@ -7,4 +7,5 @@ target 'RAMSport' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'SWXMLHash', '~> 5.0.0'
+  pod 'RealmSwift'
 end

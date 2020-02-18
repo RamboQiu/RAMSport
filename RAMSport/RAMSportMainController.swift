@@ -21,6 +21,7 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         applyClearNavigationBarStyle()
         
+        mapView.userTrackingMode = .follow
         
         headImageView.layer.cornerRadius = headImageView.width / 2
         centerCircleView.layer.cornerRadius = centerCircleView.width / 2
@@ -90,9 +91,16 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineRenderer = MKPolylineRenderer(overlay: overlay)
+        lineRenderer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        lineRenderer.lineWidth = 2
+        return lineRenderer
+    }
+    
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("locationManager:didUpdateLocations: - lang: \(locations.first?.coordinate.latitude), long: \(locations.first?.coordinate.longitude)")
+//        print("locationManager:didUpdateLocations: - lang: \(locations.first?.coordinate.latitude), long: \(locations.first?.coordinate.longitude)")
 //        let location: CLLocation! = locations.last
 //        //设置region---就是设置地图缩放 1°约等于111KM
 //        let region: MKCoordinateRegion = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))

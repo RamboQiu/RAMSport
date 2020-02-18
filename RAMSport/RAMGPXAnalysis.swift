@@ -65,7 +65,7 @@ class RAMGPXAnalysis: NSObject, XMLParserDelegate {
     func tloadMetaData() {
         for xmlIndexer in xml!["gpx"]["trk"]["trkseg"]["trkpt"].all {
             
-            print("lat=\(xmlIndexer.element?.attribute(by: "lat")?.text), lon=\(xmlIndexer.element?.attribute(by: "lon")?.text)")
+            print("lat=\(String(describing: xmlIndexer.element?.attribute(by: "lat")?.text)), lon=\(xmlIndexer.element?.attribute(by: "lon")?.text ?? "")")
         }
     }
     

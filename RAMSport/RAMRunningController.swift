@@ -30,6 +30,8 @@ class RAMRunningController: UIPageViewController, UIPageViewControllerDelegate, 
         self.delegate = self
         self.dataSource = self
         
+        applyClearNavigationBarStyle()
+        
         for subview in view.subviews {
             if let scrollView = subview as? UIScrollView {
                 scrollView.delegate = self

@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SWXMLHash
+import CoreLocation
 
 class RAMPathRecordController: UIViewController {
 
@@ -29,6 +30,8 @@ class RAMPathRecordController: UIViewController {
         var lat: String = allTrkpt.first?.element?.attribute(by: "lat")?.text ?? "0"
         var lon: String = allTrkpt.first?.element?.attribute(by: "lon")?.text ?? "0"
         startPoint.coordinate = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
+        let (n_lat,n_lng) = CLLocation.transform_earth_from_mars(lat: startPoint.coordinate.latitude, lng: startPoint.coordinate.longitude)
+        startPoint.coordinate = CLLocationCoordinate2D(latitude: startPoint.coordinate.latitude + n_lat, longitude: startPoint.coordinate.longitude + n_lng)
         startPoint.title = "start"
         mapView?.addAnnotation(startPoint)
 

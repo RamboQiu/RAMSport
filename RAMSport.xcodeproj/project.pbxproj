@@ -12,10 +12,13 @@
 		4121B06B23F90C96002CF1DA /* RAMUserRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */; };
 		4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B06D23F971B7002CF1DA /* RAMNavigator.swift */; };
 		4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07023F9796E002CF1DA /* RAMUtil.swift */; };
-		4121B07423FA648C002CF1DA /* UIViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */; };
+		4121B07423FA648C002CF1DA /* RAMViewFrameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07323FA648B002CF1DA /* RAMViewFrameExtension.swift */; };
 		4121B07623FA70C2002CF1DA /* RAMRunningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07523FA70C2002CF1DA /* RAMRunningController.swift */; };
 		4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */; };
 		4121B07A23FA79FD002CF1DA /* RAMRunningDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */; };
+		4121B07C23FBE374002CF1DA /* RAMLocationMars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B07B23FBE374002CF1DA /* RAMLocationMars.swift */; };
+		4121B07F23FBFB2F002CF1DA /* rencai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4121B07D23FBFB2E002CF1DA /* rencai.gpx */; };
+		4121B08023FBFB2F002CF1DA /* run.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4121B07E23FBFB2E002CF1DA /* run.gpx */; };
 		41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5523F434EB0055E981 /* AppDelegate.swift */; };
 		41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* RAMSportMainController.swift */; };
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
@@ -26,7 +29,6 @@
 		41A7400423F67CC6008637CD /* letoursport30.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41A7400323F67CC6008637CD /* letoursport30.gpx */; };
 		41A7400C23F68767008637CD /* RAMSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7400B23F68767008637CD /* RAMSportTests.swift */; };
 		41D257A323F57D520028B094 /* letoursport8.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41D257A223F57D520028B094 /* letoursport8.gpx */; };
-		41D257A523F57EF60028B094 /* rencai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41D257A423F57EF60028B094 /* rencai.gpx */; };
 		A16B35482E1BAEBBB32BC3FF /* Pods_RAMSport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33909F8680AFA7B13912EBEB /* Pods_RAMSport.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +49,13 @@
 		4121B06A23F90C96002CF1DA /* RAMUserRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUserRecordController.swift; sourceTree = "<group>"; };
 		4121B06D23F971B7002CF1DA /* RAMNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMNavigator.swift; sourceTree = "<group>"; };
 		4121B07023F9796E002CF1DA /* RAMUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMUtil.swift; sourceTree = "<group>"; };
-		4121B07223FA2ED9002CF1DA /* run.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = run.gpx; sourceTree = "<group>"; };
-		4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFrameExtension.swift; sourceTree = "<group>"; };
+		4121B07323FA648B002CF1DA /* RAMViewFrameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMViewFrameExtension.swift; sourceTree = "<group>"; };
 		4121B07523FA70C2002CF1DA /* RAMRunningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningController.swift; sourceTree = "<group>"; };
 		4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningMapController.swift; sourceTree = "<group>"; };
 		4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningDetailController.swift; sourceTree = "<group>"; };
+		4121B07B23FBE374002CF1DA /* RAMLocationMars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMLocationMars.swift; sourceTree = "<group>"; };
+		4121B07D23FBFB2E002CF1DA /* rencai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = rencai.gpx; sourceTree = "<group>"; };
+		4121B07E23FBFB2E002CF1DA /* run.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = run.gpx; sourceTree = "<group>"; };
 		41548F5223F434EB0055E981 /* RAMSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5523F434EB0055E981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41548F5923F434EB0055E981 /* RAMSportMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainController.swift; sourceTree = "<group>"; };
@@ -66,7 +70,6 @@
 		41A7400B23F68767008637CD /* RAMSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportTests.swift; sourceTree = "<group>"; };
 		41A7400D23F68767008637CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41D257A223F57D520028B094 /* letoursport8.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = letoursport8.gpx; sourceTree = "<group>"; };
-		41D257A423F57EF60028B094 /* rencai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = rencai.gpx; sourceTree = "<group>"; };
 		767F4668AE904DA05EBE4748 /* Pods-RAMSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RAMSport.release.xcconfig"; path = "Target Support Files/Pods-RAMSport/Pods-RAMSport.release.xcconfig"; sourceTree = "<group>"; };
 		7B733B656961DB7E32C8795E /* Pods-RAMSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RAMSport.debug.xcconfig"; path = "Target Support Files/Pods-RAMSport/Pods-RAMSport.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				4121B07023F9796E002CF1DA /* RAMUtil.swift */,
-				4121B07323FA648B002CF1DA /* UIViewFrameExtension.swift */,
+				4121B07323FA648B002CF1DA /* RAMViewFrameExtension.swift */,
+				4121B07B23FBE374002CF1DA /* RAMLocationMars.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -144,8 +148,8 @@
 				4121B06C23F97189002CF1DA /* Navigator */,
 				41D257A223F57D520028B094 /* letoursport8.gpx */,
 				41A7400323F67CC6008637CD /* letoursport30.gpx */,
-				41D257A423F57EF60028B094 /* rencai.gpx */,
-				4121B07223FA2ED9002CF1DA /* run.gpx */,
+				4121B07D23FBFB2E002CF1DA /* rencai.gpx */,
+				4121B07E23FBFB2E002CF1DA /* run.gpx */,
 				41548F5B23F434EB0055E981 /* Main.storyboard */,
 				41548F5E23F434EE0055E981 /* Assets.xcassets */,
 				41548F6023F434EE0055E981 /* LaunchScreen.storyboard */,
@@ -269,7 +273,8 @@
 				41548F6223F434EE0055E981 /* LaunchScreen.storyboard in Resources */,
 				41548F5F23F434EE0055E981 /* Assets.xcassets in Resources */,
 				41548F5D23F434EB0055E981 /* Main.storyboard in Resources */,
-				41D257A523F57EF60028B094 /* rencai.gpx in Resources */,
+				4121B07F23FBFB2F002CF1DA /* rencai.gpx in Resources */,
+				4121B08023FBFB2F002CF1DA /* run.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4121B07C23FBE374002CF1DA /* RAMLocationMars.swift in Sources */,
 				4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */,
 				4121B07A23FA79FD002CF1DA /* RAMRunningDetailController.swift in Sources */,
 				41A7400223F67790008637CD /* RAMGPXModel.swift in Sources */,
@@ -356,7 +362,7 @@
 				4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */,
 				4121B07623FA70C2002CF1DA /* RAMRunningController.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
-				4121B07423FA648C002CF1DA /* UIViewFrameExtension.swift in Sources */,
+				4121B07423FA648C002CF1DA /* RAMViewFrameExtension.swift in Sources */,
 				4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */,
 				4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */,
 			);

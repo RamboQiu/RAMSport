@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWU-Au-ox8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sJC-MG-19m">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -209,10 +209,28 @@
                     <view key="view" contentMode="scaleToFill" id="Af5-xF-ycQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SGq-4Y-ovC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sJC-MG-19m" id="ePS-hX-k5p"/>
+                                    <outlet property="delegate" destination="sJC-MG-19m" id="tRU-Gq-YQW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EFQ-K1-710" firstAttribute="bottom" secondItem="SGq-4Y-ovC" secondAttribute="bottom" id="Kcx-9D-fg7"/>
+                            <constraint firstItem="EFQ-K1-710" firstAttribute="trailing" secondItem="SGq-4Y-ovC" secondAttribute="trailing" id="Lyi-Jy-9V7"/>
+                            <constraint firstItem="SGq-4Y-ovC" firstAttribute="leading" secondItem="EFQ-K1-710" secondAttribute="leading" id="QDt-a0-an0"/>
+                            <constraint firstItem="SGq-4Y-ovC" firstAttribute="top" secondItem="EFQ-K1-710" secondAttribute="top" id="Wma-e3-7EE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EFQ-K1-710"/>
                     </view>
                     <navigationItem key="navigationItem" id="ehL-Yx-Nms"/>
+                    <connections>
+                        <outlet property="tableView" destination="SGq-4Y-ovC" id="s0F-L7-Zht"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ooj-Zp-JL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

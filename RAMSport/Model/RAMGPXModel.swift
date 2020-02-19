@@ -75,23 +75,3 @@ class RAMGPXModel: Object {
     let wpt = List<RAMGPXWptModel>()
     let trk = List<RAMGPXTrkModel>()
 }
-
-/**
- * 一次运动记录
- */
-class RAMRunModel: Object {
-    /// 运动发生时间
-    @objc dynamic var date = Date()
-    /// 运动轨迹
-    @objc dynamic var gpxPath: RAMGPXModel? = RAMGPXModel()
-    /// 运动距离
-    @objc dynamic var distance = 0.0
-    /// 运动时间
-    @objc dynamic var time = 0
-    /// 均速 每公里时间
-    @objc dynamic var speed = 0
-    /// 上升高度
-    @objc dynamic var upDistance = 0.0
-    /// 下降高度
-    @objc dynamic var downDistance = 0.0
-}

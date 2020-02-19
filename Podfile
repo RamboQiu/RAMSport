@@ -8,4 +8,5 @@ target 'RAMSport' do
   pod 'GooglePlaces'
   pod 'SWXMLHash', '~> 5.0.0'
   pod 'RealmSwift'
+  pod 'SnapKit', '~> 5.0.0'
 end

@@ -21,6 +21,12 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var upLabel: UILabel!
     @IBOutlet weak var downLabel: UILabel!
     
+    lazy var realm: Realm! = {
+        let r = try! Realm()
+        r.beginWrite()
+        return r
+    }()
+    
     var userPoints:[CLLocation] = []
     lazy var timer: Timer = {
         let t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timeRun), userInfo: nil, repeats: true)
@@ -29,7 +35,35 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         return t
     }()
     
-    let runModel = RAMRunModel()
+    lazy var runMonthModel: RAMMonthRunModel = {
+        let calendar = NSCalendar.current
+        let dateComponent = calendar.dateComponents([.year, .month], from: Date())
+        let year = dateComponent.year!
+        let month = dateComponent.month!
+//        let predicate = NSPredicate(format: "month = %@", runModel.month! as NSDate)
+        let results = realm.objects(RAMMonthRunModel.self).filter("year == \(year) && month == \(month)")
+        if let monthRunModel = results.first {
+            return monthRunModel
+        } else {
+            let monthRunModel = RAMMonthRunModel()
+            monthRunModel.year = year
+            monthRunModel.month = month
+            realm.add(monthRunModel)
+            return monthRunModel
+        }
+    }()
+    
+    lazy var runModel: RAMRunModel = {
+        let runModel = RAMRunModel()
+        let date = runModel.date
+        let calendar = NSCalendar.current
+        let dateComponent = calendar.dateComponents([.year, .month, .day], from: date)
+        runModel.year = dateComponent.year!
+        runModel.month = dateComponent.month!
+        runModel.day = dateComponent.day!
+        runMonthModel.runs.append(runModel)
+        return runModel
+    }()
     
     var distance: Double = 0.0 {
         didSet {
@@ -112,8 +146,6 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         locationManager.stopUpdatingLocation()
         timer.invalidate()
         
-        let realm = try! Realm() // Create realm pointing to default file
-        realm.beginWrite()
         realm.add(runModel)
         try! realm.commitWrite()
         

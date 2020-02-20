@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sJC-MG-19m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sWU-Au-ox8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -142,6 +142,7 @@
                         <outlet property="headImageView" destination="7bX-Iq-Po7" id="kfQ-5F-7ar"/>
                         <outlet property="mapView" destination="Ggm-he-B3r" id="XrH-5P-deY"/>
                         <segue destination="sOR-RN-SCw" kind="show" identifier="running" id="Swo-Lg-U44"/>
+                        <segue destination="o1U-Io-OnT" kind="show" id="Fnb-xx-CSX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -156,7 +157,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQ4-75-qhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920" y="126"/>
+            <point key="canvasLocation" x="1843" y="601"/>
         </scene>
         <!--Path Record Controller-->
         <scene sceneID="IKt-RS-sid">
@@ -202,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="126.38680659670166"/>
         </scene>
-        <!--User Record Controller-->
+        <!--Record Controller-->
         <scene sceneID="cgf-M8-3cJ">
             <objects>
-                <viewController id="sJC-MG-19m" customClass="RAMUserRecordController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sJC-MG-19m" customClass="RAMRecordController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Af5-xF-ycQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,6 +231,7 @@
                     <navigationItem key="navigationItem" id="ehL-Yx-Nms"/>
                     <connections>
                         <outlet property="tableView" destination="SGq-4Y-ovC" id="s0F-L7-Zht"/>
+                        <segue destination="h7w-HE-Vf4" kind="show" identifier="detail" id="0eu-w7-eJF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ooj-Zp-JL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -358,6 +360,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PAw-32-0ae"/>
                     </view>
+                    <navigationItem key="navigationItem" id="m55-8d-b3c"/>
                     <connections>
                         <outlet property="distanceLabel" destination="m1G-DD-hef" id="GPm-4D-M3X"/>
                         <outlet property="downLabel" destination="Qk4-1y-l5j" id="gIP-zp-Ndh"/>
@@ -365,6 +368,7 @@
                         <outlet property="speedLabel" destination="eho-HW-93d" id="8n3-xY-f5e"/>
                         <outlet property="timeLabel" destination="6t8-g8-fvJ" id="hRJ-ef-bsw"/>
                         <outlet property="upLabel" destination="YdH-N3-gdh" id="1Ij-IE-4dz"/>
+                        <segue destination="h7w-HE-Vf4" kind="show" identifier="runningComplete" id="Tz1-M8-Zp7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKS-Jb-lcg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -393,10 +397,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5k-fb-2Ik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3253.6231884057975" y="125.89285714285714"/>
+            <point key="canvasLocation" x="3317" y="126"/>
+        </scene>
+        <!--Detail Controller-->
+        <scene sceneID="Ihh-mt-dH2">
+            <objects>
+                <viewController id="h7w-HE-Vf4" customClass="RAMDetailController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FZK-v9-4mG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CQP-cH-uqc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="h7w-HE-Vf4" id="Jhq-X0-LTo"/>
+                                    <outlet property="delegate" destination="h7w-HE-Vf4" id="trQ-bk-VPQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CQP-cH-uqc" firstAttribute="leading" secondItem="e8l-RD-qt8" secondAttribute="leading" id="F3T-Lr-Pyt"/>
+                            <constraint firstItem="e8l-RD-qt8" firstAttribute="bottom" secondItem="CQP-cH-uqc" secondAttribute="bottom" id="Shf-CO-sob"/>
+                            <constraint firstItem="e8l-RD-qt8" firstAttribute="trailing" secondItem="CQP-cH-uqc" secondAttribute="trailing" id="WCO-yh-yl3"/>
+                            <constraint firstItem="CQP-cH-uqc" firstAttribute="top" secondItem="e8l-RD-qt8" secondAttribute="top" id="kEr-vO-B5s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e8l-RD-qt8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="weE-lv-vTu"/>
+                    <connections>
+                        <outlet property="tableView" destination="CQP-cH-uqc" id="MsO-iW-FKR"/>
+                        <segue destination="USX-hC-wj2" kind="show" identifier="detailMap" id="RsA-bT-dRv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rFY-4J-6Zf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4134.7826086956529" y="-237.05357142857142"/>
+        </scene>
+        <!--Detail Map Controller-->
+        <scene sceneID="iKA-Xc-SkC">
+            <objects>
+                <viewController id="USX-hC-wj2" customClass="RAMDetailMapController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FEb-ML-vkK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rBe-eZ-cjJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oCb-Lt-fl6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3E-2Y-pwW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4961" y="-237"/>
         </scene>
     </scenes>
     <resources>
         <image name="avatar" width="960" height="960"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0eu-w7-eJF"/>
+    </inferredMetricsTieBreakers>
 </document>

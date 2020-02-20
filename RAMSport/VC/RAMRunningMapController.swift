@@ -129,6 +129,14 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         
         mapView.userTrackingMode = .follow
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "runningComplete" {
+            if let vc = segue.destination as? RAMDetailController {
+                vc.from = .running
+            }
+        }
+    }
         
     @IBAction func beginRun(_ sender: UIButton) {
         locationManager.startUpdatingLocation()
@@ -145,10 +153,34 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBAction func endRun(_ sender: UIButton) {
         locationManager.stopUpdatingLocation()
         timer.invalidate()
-        
+        if let wpts = runModel.gpxPath?.trk.first?.trkseg {
+            mapView.region = region(for: wpts)
+        }
         realm.add(runModel)
         try! realm.commitWrite()
         
+        performSegue(withIdentifier: "runningComplete", sender: nil)
+    }
+    func region(for wpts: List<RAMGPXWptModel>) -> MKCoordinateRegion {
+        var minLat = 360.0, maxLat = -360.0, minLon = 360.0, maxLon = -360.0
+        for wptModel in wpts {
+            if wptModel.lat  < minLat {
+                minLat = wptModel.lat
+            }
+            if wptModel.lat  > maxLat {
+                maxLat =  wptModel.lat
+            }
+            if wptModel.lon < minLon {
+                minLon = wptModel.lon
+            }
+            if wptModel.lon > maxLon {
+                maxLon = wptModel.lon
+            }
+        }
+        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2.0, longitude: (minLon + maxLon) / 2.0)
+        let span = MKCoordinateSpan(latitudeDelta: maxLat - minLat + 0.001, longitudeDelta: maxLon - minLon + 0.001)
+        let region = MKCoordinateRegion(center: center, span: span)
+        return region
     }
     
     @objc func timeRun() {
@@ -233,8 +265,8 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let lineRenderer = MKPolylineRenderer(overlay: overlay)
-        lineRenderer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        lineRenderer.lineWidth = 2
+        lineRenderer.strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        lineRenderer.lineWidth = 4
         return lineRenderer
     }
     

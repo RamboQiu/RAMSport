@@ -34,4 +34,6 @@ class RAMRunModel: Object {
     @objc dynamic var upDistance = 0.0
     /// 下降高度
     @objc dynamic var downDistance = 0.0
+    /// 跑步路径缩略图
+    @objc dynamic var pathImage: Data?
 }

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class RAMUserRecordController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RAMRecordController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -37,8 +37,8 @@ class RAMUserRecordController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func setupUI() {
-        tableView.register(RAMUserRecordTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(RAMUserRecordSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(RAMRecordTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(RAMRecordSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
 
 //        self.title = "GroupedTableView"
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "BG Add", style: .plain, target: self, action: #selector(TableViewController.backgroundAdd))
@@ -56,7 +56,7 @@ class RAMUserRecordController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RAMUserRecordTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RAMRecordTableViewCell
 
         let object = objectsBySection[indexPath.section][indexPath.row]
         cell.titleLabel.text = "星期日 下午跑"
@@ -69,7 +69,7 @@ class RAMUserRecordController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? RAMUserRecordSectionHeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? RAMRecordSectionHeaderView
         let object = objectsBySection[section].first!
         headerView?.titleLabel.text = "\(object.year)年\(object.month)月"
         headerView?.descLabel.text = "1次跑步 7.95公里 6‘41’‘/公里"

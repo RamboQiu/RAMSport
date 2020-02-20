@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class RAMUserRecordTableViewCell: UITableViewCell {
+class RAMRecordTableViewCell: UITableViewCell {
     
     var headImageView = UIImageView()
     var timeLabel = UILabel()
@@ -19,6 +19,9 @@ class RAMUserRecordTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        
         headImageView.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         contentView.addSubview(headImageView)
         headImageView.snp.makeConstraints { (make) in

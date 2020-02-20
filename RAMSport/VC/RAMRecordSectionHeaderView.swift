@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class RAMUserRecordSectionHeaderView: UITableViewHeaderFooterView {
+class RAMRecordSectionHeaderView: UITableViewHeaderFooterView {
 
     var titleLabel = UILabel()
     var descLabel = UILabel()

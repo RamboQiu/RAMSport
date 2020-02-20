@@ -38,6 +38,7 @@
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
 		41548F5F23F434EE0055E981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5E23F434EE0055E981 /* Assets.xcassets */; };
 		41548F6223F434EE0055E981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F6023F434EE0055E981 /* LaunchScreen.storyboard */; };
+		41790D3023FED24E0091E82B /* RAMSportMainCenterCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790D2F23FED24E0091E82B /* RAMSportMainCenterCircleView.swift */; };
 		41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */; };
 		41A7400423F67CC6008637CD /* letoursport30.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41A7400323F67CC6008637CD /* letoursport30.gpx */; };
 		41A7400C23F68767008637CD /* RAMSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7400B23F68767008637CD /* RAMSportTests.swift */; };
@@ -89,6 +90,7 @@
 		41548F5E23F434EE0055E981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41548F6123F434EE0055E981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41548F6323F434EE0055E981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41790D2F23FED24E0091E82B /* RAMSportMainCenterCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainCenterCircleView.swift; sourceTree = "<group>"; };
 		41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXAnalysis.swift; sourceTree = "<group>"; };
 		41A7400123F67790008637CD /* RAMGPXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXModel.swift; sourceTree = "<group>"; };
 		41A7400323F67CC6008637CD /* letoursport30.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = letoursport30.gpx; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				41548F5923F434EB0055E981 /* RAMSportMainController.swift */,
+				41790D2F23FED24E0091E82B /* RAMSportMainCenterCircleView.swift */,
 				4121B06623F90C4C002CF1DA /* RAMPathRecordController.swift */,
 				4121B06823F90C6F002CF1DA /* RAMUserController.swift */,
 				4121B06A23F90C96002CF1DA /* RAMRecordController.swift */,
@@ -438,6 +441,7 @@
 				4121B09123FD7D40002CF1DA /* RAMDetailController.swift in Sources */,
 				4121B09F23FE89FB002CF1DA /* RAMDetailMapController.swift in Sources */,
 				4121B08623FD1043002CF1DA /* RAMUserModel.swift in Sources */,
+				41790D3023FED24E0091E82B /* RAMSportMainCenterCircleView.swift in Sources */,
 				4121B07423FA648C002CF1DA /* RAMViewFrameExtension.swift in Sources */,
 				4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */,
 				4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */,

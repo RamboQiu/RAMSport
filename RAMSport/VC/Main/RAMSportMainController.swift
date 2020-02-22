@@ -14,10 +14,11 @@ import SWXMLHash
 class RAMSportMainController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var headImageView: UIImageView!
+    @IBOutlet weak var headView: RAMSportMainHeadView!
     @IBOutlet weak var centerCircleView: RAMSportMainCenterCircleView!
-    @IBOutlet weak var recordGraphView: UIView!
+    @IBOutlet weak var recordGraphView: RAMSportMainRecordGraphView!
     @IBOutlet weak var manuView: UIView!
+    @IBOutlet weak var addView: RAMSportMainAddView!
     
     private var locationManager = CLLocationManager()
     
@@ -27,11 +28,14 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         
         mapView.userTrackingMode = .follow
         
-        headImageView.layer.cornerRadius = headImageView.width / 2
-        centerCircleView.layer.cornerRadius = centerCircleView.width / 2
         recordGraphView.layer.cornerRadius = 20
         manuView.layer.cornerRadius = 20
-        centerCircleView.angle = 0
+        headView.headImageView.layer.cornerRadius = headView.headImageView.width / 2
+        addView.layer.cornerRadius = addView.width / 2
+        centerCircleView.angle = .pi / 2
+        
+        recordGraphView.speedCurveView.title = "5'33'' /km"
+        recordGraphView.distanceCurveView.title = "8 km"
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startSport(_:)))
@@ -49,6 +53,11 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         default:
             locationManager.requestWhenInUseAuthorization()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        centerCircleView.layer.cornerRadius = centerCircleView.width / 2
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

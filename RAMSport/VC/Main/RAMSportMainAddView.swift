@@ -1,33 +1,30 @@
 //
-//  RAMSportMainCenterCircleView.swift
+//  RAMSportMainAddView.swift
 //  RAMSport
 //
-//  Created by rambo on 2020/2/20.
+//  Created by rambo on 2020/2/21.
 //  Copyright © 2020 rambo. All rights reserved.
 //
 
 import UIKit
 
-class RAMSportMainCenterCircleView: UIView {
-    
-    var angle = 0.0
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-    }
+class RAMSportMainAddView: UIView {
     
     override func draw(_ rect: CGRect) {
-        //获取绘图上下文
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-         
         //使用rgb颜色空间
         let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //颜色数组（这里使用三组颜色作为渐变）fc6820
-        let compoents:[CGFloat] = [0.8676989675, 0.5287663937, 0.4742602706, 1,
-                                   0, 0, 0, 0]
+        /// dark 0 0 0 1
+        /// light 1 1 1 1
+        
+//        #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+        
+        let compoents:[CGFloat] = [0.3098039329, 0.01568627544, 0.1294117719, 1,
+                                   0.5725490451, 0, 0.2313725501, 1]
         //没组颜色所在位置（范围0~1)
         let locations:[CGFloat] = [0,1]
         //生成渐变色（count参数表示渐变个数）
@@ -42,11 +39,24 @@ class RAMSportMainCenterCircleView: UIView {
         context.drawLinearGradient(gradient, start: start, end: end,
                                    options: .drawsBeforeStartLocation)
         
-        context.addArc(center: CGPoint(x: width/2, y: height/2), radius: width/2 - 3, startAngle: -.pi / 2, endAngle: CGFloat(angle), clockwise: false)
+        let offset: CGFloat = 20.0
+        let path = UIBezierPath()
+        var startPoint = CGPoint(x: rect.width / 2, y: offset)
+        
+        path.move(to: startPoint)
+        var endPoint = CGPoint(x: rect.width / 2, y: rect.height - offset)
+        path.addLine(to: endPoint)
+        
+        startPoint = CGPoint(x: offset, y: rect.height / 2)
+        path.move(to: startPoint)
+        endPoint = CGPoint(x: rect.width - offset, y: rect.height / 2)
+        path.addLine(to: endPoint)
+        
         UIColor.white.setStroke()
-        context.setLineWidth(6.0)
+        context.setLineWidth(2)
+        context.addPath(path.cgPath)
         context.setLineCap(.round)
-        context.drawPath(using: .stroke)
+        context.strokePath()
     }
 
 }

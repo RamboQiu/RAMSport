@@ -30,6 +30,10 @@
 
    
 
+3. swift 初始化相关的 init
+
+   https://www.jianshu.com/p/fb1a91600468
+
 ## 待完善的功能
 
 1. 运动监听，生成轨迹

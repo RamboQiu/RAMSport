@@ -37,9 +37,11 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         recordGraphView.speedCurveView.title = "5'33'' /km"
         recordGraphView.distanceCurveView.title = "8 km"
         
+        let tapRecordGesture = UITapGestureRecognizer(target: self, action: #selector(routeTo(record:)))
+        recordGraphView.addGestureRecognizer(tapRecordGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startSport(_:)))
-        centerCircleView.addGestureRecognizer(tapGesture)
+        let tapRunningGesture = UITapGestureRecognizer(target: self, action: #selector(routeTo(running:)))
+        centerCircleView.addGestureRecognizer(tapRunningGesture)
         
         
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -64,8 +66,12 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         return ram_statusBarStyle
     }
     
-    @objc func startSport(_ tapGesture: UITapGestureRecognizer) {
+    @objc func routeTo(running tapGesture: UITapGestureRecognizer) {
         performSegue(withIdentifier: "running", sender: self)
+    }
+    
+    @objc func routeTo(record tapGesture: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "record", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

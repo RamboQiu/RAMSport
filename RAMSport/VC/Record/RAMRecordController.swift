@@ -13,7 +13,8 @@ class RAMRecordController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var emptyView: UIView!
+    
     var notificationToken: NotificationToken?
     var realm: Realm!
     var objectsBySection = [Results<RAMRunModel>]()
@@ -34,6 +35,9 @@ class RAMRecordController: UIViewController, UITableViewDelegate, UITableViewDat
             let groupByMonthObjects = realm.objects(RAMRunModel.self).filter("year == \(monthRunModel.year) && month == \(monthRunModel.month)").sorted(byKeyPath: "date", ascending: false)
             objectsBySection.append(groupByMonthObjects)
         }
+        
+        tableView.isHidden = (objectsBySection.count == 0)
+        emptyView.isHidden = !tableView.isHidden
     }
 
     func setupUI() {

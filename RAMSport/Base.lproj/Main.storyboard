@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NR-nz-vyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="-657"/>
+            <point key="canvasLocation" x="1337" y="-658"/>
         </scene>
         <!--Sport Main Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -312,6 +312,7 @@
                         <outlet property="recordGraphView" destination="GTB-BI-xHY" id="Ydj-VN-bxZ"/>
                         <segue destination="sOR-RN-SCw" kind="show" identifier="running" id="Swo-Lg-U44"/>
                         <segue destination="o1U-Io-OnT" kind="show" id="Fnb-xx-CSX"/>
+                        <segue destination="sJC-MG-19m" kind="show" identifier="record" id="UvI-Pv-Lq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -352,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vBl-dv-5fd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2555" y="-658"/>
+            <point key="canvasLocation" x="2113" y="-659"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nMJ-7D-u4o">
@@ -380,8 +381,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SGq-4Y-ovC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gX-o7-Tg6">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="0Ji-85-UKu">
+                                        <rect key="frame" x="125.5" y="209.5" width="124" height="124"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="2W6-JO-DpQ"/>
+                                            <constraint firstAttribute="width" constant="124" id="A9I-QW-9tm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还没有一次运动哦~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo5-3q-Fad">
+                                        <rect key="frame" x="0.0" y="343.5" width="375" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Cn6-vj-8kR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oo5-3q-Fad" secondAttribute="trailing" id="0NZ-T1-HAO"/>
+                                    <constraint firstItem="0Ji-85-UKu" firstAttribute="centerY" secondItem="9gX-o7-Tg6" secondAttribute="centerY" constant="-40" id="7fE-tq-UYY"/>
+                                    <constraint firstItem="oo5-3q-Fad" firstAttribute="leading" secondItem="9gX-o7-Tg6" secondAttribute="leading" id="S3t-Ss-acR"/>
+                                    <constraint firstItem="oo5-3q-Fad" firstAttribute="top" secondItem="0Ji-85-UKu" secondAttribute="bottom" constant="10" id="SbL-Y2-HOu"/>
+                                    <constraint firstItem="0Ji-85-UKu" firstAttribute="centerX" secondItem="9gX-o7-Tg6" secondAttribute="centerX" id="SpI-YU-kGa"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SGq-4Y-ovC">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <connections>
                                     <outlet property="dataSource" destination="sJC-MG-19m" id="ePS-hX-k5p"/>
                                     <outlet property="delegate" destination="sJC-MG-19m" id="tRU-Gq-YQW"/>
@@ -390,15 +420,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="9gX-o7-Tg6" firstAttribute="top" secondItem="EFQ-K1-710" secondAttribute="top" id="FzT-wg-4EX"/>
                             <constraint firstItem="EFQ-K1-710" firstAttribute="bottom" secondItem="SGq-4Y-ovC" secondAttribute="bottom" id="Kcx-9D-fg7"/>
                             <constraint firstItem="EFQ-K1-710" firstAttribute="trailing" secondItem="SGq-4Y-ovC" secondAttribute="trailing" id="Lyi-Jy-9V7"/>
                             <constraint firstItem="SGq-4Y-ovC" firstAttribute="leading" secondItem="EFQ-K1-710" secondAttribute="leading" id="QDt-a0-an0"/>
+                            <constraint firstItem="EFQ-K1-710" firstAttribute="trailing" secondItem="9gX-o7-Tg6" secondAttribute="trailing" id="QV9-Jd-fx9"/>
+                            <constraint firstItem="EFQ-K1-710" firstAttribute="bottom" secondItem="9gX-o7-Tg6" secondAttribute="bottom" id="UVb-Kq-X5F"/>
                             <constraint firstItem="SGq-4Y-ovC" firstAttribute="top" secondItem="EFQ-K1-710" secondAttribute="top" id="Wma-e3-7EE"/>
+                            <constraint firstItem="9gX-o7-Tg6" firstAttribute="leading" secondItem="EFQ-K1-710" secondAttribute="leading" id="xG4-Lq-fi0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EFQ-K1-710"/>
                     </view>
                     <navigationItem key="navigationItem" id="ehL-Yx-Nms"/>
                     <connections>
+                        <outlet property="emptyView" destination="9gX-o7-Tg6" id="Esa-Ft-PfI"/>
                         <outlet property="tableView" destination="SGq-4Y-ovC" id="s0F-L7-Zht"/>
                         <segue destination="h7w-HE-Vf4" kind="show" identifier="detail" id="0eu-w7-eJF"/>
                     </connections>
@@ -573,11 +608,11 @@
             <objects>
                 <viewController id="h7w-HE-Vf4" customClass="RAMDetailController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZK-v9-4mG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CQP-cH-uqc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="h7w-HE-Vf4" id="Jhq-X0-LTo"/>
@@ -609,7 +644,7 @@
             <objects>
                 <viewController id="USX-hC-wj2" customClass="RAMDetailMapController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FEb-ML-vkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rBe-eZ-cjJ"/>
@@ -623,6 +658,7 @@
     </scenes>
     <resources>
         <image name="avatar" width="960" height="960"/>
+        <image name="empty" width="124" height="124"/>
         <image name="ic_settings" width="48" height="48"/>
         <image name="itunes_logo" width="48" height="48"/>
     </resources>

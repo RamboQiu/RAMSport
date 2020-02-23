@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import RealmSwift
+import AudioToolbox
 
 class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
@@ -19,7 +20,9 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var upLabel: UILabel!
-    @IBOutlet weak var downLabel: UILabel!
+    @IBOutlet weak var pauseButton: RAMRunningPauseView!
+    @IBOutlet weak var endButton: RAMRunningEndView!
+    @IBOutlet weak var startButton: RAMRunningStartView!
     
     lazy var realm: Realm! = {
         let r = try! Realm()
@@ -128,6 +131,15 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         }
         
         mapView.userTrackingMode = .follow
+        
+        pauseButton.layer.cornerRadius = pauseButton.width / 2
+        endButton.layer.cornerRadius = endButton.width / 2
+        startButton.layer.cornerRadius = startButton.width / 2
+        
+        let longPressEndGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressEndAction(_:)))
+        let tapEndGesture = UITapGestureRecognizer(target: self, action: #selector(tapPressEndAction(_:)))
+        endButton.addGestureRecognizer(longPressEndGesture)
+        endButton.addGestureRecognizer(tapEndGesture)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,16 +163,58 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     
     @IBAction func endRun(_ sender: UIButton) {
-        locationManager.stopUpdatingLocation()
-        timer.invalidate()
-        if let wpts = runModel.gpxPath?.trk.first?.trkseg {
-            mapView.region = region(for: wpts)
-        }
-        realm.add(runModel)
-        try! realm.commitWrite()
-        
-        performSegue(withIdentifier: "runningComplete", sender: nil)
+//        locationManager.stopUpdatingLocation()
+//        timer.invalidate()
+//        if let wpts = runModel.gpxPath?.trk.first?.trkseg {
+//            mapView.region = region(for: wpts)
+//        }
+//        realm.add(runModel)
+//        try! realm.commitWrite()
+//        
+//        performSegue(withIdentifier: "runningComplete", sender: nil)
     }
+    
+    @objc func tapPressEndAction(_ event: UITapGestureRecognizer) {
+        print("please long press to end.")
+        AudioServicesPlaySystemSound(1519)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.endButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { (finish) in
+            UIView.animate(withDuration: 0.2) {
+                self.endButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
+    }
+    
+    @objc func longPressEndAction(_ event: UILongPressGestureRecognizer) {
+        switch event.state {
+        case .began:
+            print("1")
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.endButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+//            }) { (finish) in
+////                短震  3D Touch中的peek震动反馈
+////                AudioServicesPlaySystemSound(1519)
+////                //短震  3D Touch中的pop震动反馈
+////                AudioServicesPlaySystemSound(1520)
+////                //连续三次短震动
+////                AudioServicesPlaySystemSound(1521)
+//                AudioServicesPlaySystemSound(1519)
+//                UIView.animate(withDuration: 0.3) {
+//                    self.endButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+//                }
+//            }
+        case .ended:
+            print("2")
+        case .cancelled:
+            print("3")
+        case .changed:
+            print("4")
+        default:
+            return
+        }
+    }
+    
     func region(for wpts: List<RAMGPXWptModel>) -> MKCoordinateRegion {
         var minLat = 360.0, maxLat = -360.0, minLon = 360.0, maxLon = -360.0
         for wptModel in wpts {

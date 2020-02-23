@@ -41,7 +41,9 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         recordGraphView.addGestureRecognizer(tapRecordGesture)
         
         let tapRunningGesture = UITapGestureRecognizer(target: self, action: #selector(routeTo(running:)))
-        centerCircleView.addGestureRecognizer(tapRunningGesture)
+        addView.addGestureRecognizer(tapRunningGesture)
+        
+        mapView.alpha = 0
         
         
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -87,6 +89,9 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude + 0.0001, longitude: userLocation.coordinate.longitude - 0.0015)
         let region: MKCoordinateRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         mapView.setRegion(region, animated: true)
+        UIView.animate(withDuration: 2) {
+            mapView.alpha = 1
+        }
     }
 }
 

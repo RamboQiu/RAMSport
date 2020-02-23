@@ -34,6 +34,13 @@
 		4121B09D23FE8771002CF1DA /* RAMDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B09C23FE8771002CF1DA /* RAMDetailMapTableViewCell.swift */; };
 		4121B09F23FE89FB002CF1DA /* RAMDetailMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121B09E23FE89FB002CF1DA /* RAMDetailMapController.swift */; };
 		41343E8B2400243D0016A82F /* RAMSportMainHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E8A2400243D0016A82F /* RAMSportMainHeadView.swift */; };
+		41343E902400F8440016A82F /* RAMRunningInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E8F2400F8440016A82F /* RAMRunningInfoView.swift */; };
+		41343E9224021CB40016A82F /* RAMRunningPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E9124021CB40016A82F /* RAMRunningPauseView.swift */; };
+		41343E9424021CC50016A82F /* RAMRunningStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E9324021CC50016A82F /* RAMRunningStartView.swift */; };
+		41343E9624021CD00016A82F /* RAMRunningEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E9524021CD00016A82F /* RAMRunningEndView.swift */; };
+		41343E98240220670016A82F /* RAMRunningManuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E97240220670016A82F /* RAMRunningManuView.swift */; };
+		41343E9A240221020016A82F /* RAMRunningPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E99240221020016A82F /* RAMRunningPageControlView.swift */; };
+		41343E9C240221140016A82F /* RAMRunningMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41343E9B240221140016A82F /* RAMRunningMusicView.swift */; };
 		41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5523F434EB0055E981 /* AppDelegate.swift */; };
 		41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41548F5923F434EB0055E981 /* RAMSportMainController.swift */; };
 		41548F5D23F434EB0055E981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F5B23F434EB0055E981 /* Main.storyboard */; };
@@ -88,6 +95,13 @@
 		4121B09C23FE8771002CF1DA /* RAMDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMDetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		4121B09E23FE89FB002CF1DA /* RAMDetailMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMDetailMapController.swift; sourceTree = "<group>"; };
 		41343E8A2400243D0016A82F /* RAMSportMainHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainHeadView.swift; sourceTree = "<group>"; };
+		41343E8F2400F8440016A82F /* RAMRunningInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningInfoView.swift; sourceTree = "<group>"; };
+		41343E9124021CB40016A82F /* RAMRunningPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningPauseView.swift; sourceTree = "<group>"; };
+		41343E9324021CC50016A82F /* RAMRunningStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningStartView.swift; sourceTree = "<group>"; };
+		41343E9524021CD00016A82F /* RAMRunningEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningEndView.swift; sourceTree = "<group>"; };
+		41343E97240220670016A82F /* RAMRunningManuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningManuView.swift; sourceTree = "<group>"; };
+		41343E99240221020016A82F /* RAMRunningPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningPageControlView.swift; sourceTree = "<group>"; };
+		41343E9B240221140016A82F /* RAMRunningMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningMusicView.swift; sourceTree = "<group>"; };
 		41548F5223F434EB0055E981 /* RAMSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41548F5523F434EB0055E981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41548F5923F434EB0055E981 /* RAMSportMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainController.swift; sourceTree = "<group>"; };
@@ -216,6 +230,13 @@
 			children = (
 				4121B07523FA70C2002CF1DA /* RAMRunningController.swift */,
 				4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */,
+				41343E8F2400F8440016A82F /* RAMRunningInfoView.swift */,
+				41343E97240220670016A82F /* RAMRunningManuView.swift */,
+				41343E9124021CB40016A82F /* RAMRunningPauseView.swift */,
+				41343E9324021CC50016A82F /* RAMRunningStartView.swift */,
+				41343E9524021CD00016A82F /* RAMRunningEndView.swift */,
+				41343E99240221020016A82F /* RAMRunningPageControlView.swift */,
+				41343E9B240221140016A82F /* RAMRunningMusicView.swift */,
 				4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */,
 			);
 			path = Running;
@@ -461,8 +482,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41343E9424021CC50016A82F /* RAMRunningStartView.swift in Sources */,
 				4121B09D23FE8771002CF1DA /* RAMDetailMapTableViewCell.swift in Sources */,
 				4121B09323FD8881002CF1DA /* RAMDetailDateTableViewCell.swift in Sources */,
+				41343E9224021CB40016A82F /* RAMRunningPauseView.swift in Sources */,
 				4121B08A23FD2248002CF1DA /* RAMRunModel.swift in Sources */,
 				4121B07C23FBE374002CF1DA /* RAMLocationMars.swift in Sources */,
 				4121B06E23F971B7002CF1DA /* RAMNavigator.swift in Sources */,
@@ -482,15 +505,20 @@
 				4121B07123F9796E002CF1DA /* RAMUtil.swift in Sources */,
 				4121B07623FA70C2002CF1DA /* RAMRunningController.swift in Sources */,
 				4121B09523FE66E3002CF1DA /* RAMViewLineExtension.swift in Sources */,
+				41343E902400F8440016A82F /* RAMRunningInfoView.swift in Sources */,
 				4121B09723FE6C18002CF1DA /* RAMMacros.swift in Sources */,
+				41343E9A240221020016A82F /* RAMRunningPageControlView.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
 				4121B09123FD7D40002CF1DA /* RAMDetailController.swift in Sources */,
+				41343E9C240221140016A82F /* RAMRunningMusicView.swift in Sources */,
 				4121B09F23FE89FB002CF1DA /* RAMDetailMapController.swift in Sources */,
 				4121B08623FD1043002CF1DA /* RAMUserModel.swift in Sources */,
+				41343E9624021CD00016A82F /* RAMRunningEndView.swift in Sources */,
 				41A33FE523FFD6A200B9D175 /* RAMSportMainAddView.swift in Sources */,
 				41790D3023FED24E0091E82B /* RAMSportMainCenterCircleView.swift in Sources */,
 				4121B07423FA648C002CF1DA /* RAMViewFrameExtension.swift in Sources */,
 				4121B06923F90C6F002CF1DA /* RAMUserController.swift in Sources */,
+				41343E98240220670016A82F /* RAMRunningManuView.swift in Sources */,
 				4121B07823FA79EA002CF1DA /* RAMRunningMapController.swift in Sources */,
 				41343E8B2400243D0016A82F /* RAMSportMainHeadView.swift in Sources */,
 			);

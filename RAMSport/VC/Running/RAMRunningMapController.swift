@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import RealmSwift
-import AudioToolbox
 
 class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
@@ -136,10 +135,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         endButton.layer.cornerRadius = endButton.width / 2
         startButton.layer.cornerRadius = startButton.width / 2
         
-        let longPressEndGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressEndAction(_:)))
-        let tapEndGesture = UITapGestureRecognizer(target: self, action: #selector(tapPressEndAction(_:)))
-        endButton.addGestureRecognizer(longPressEndGesture)
-        endButton.addGestureRecognizer(tapEndGesture)
+//        let longPressEndGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressEndAction(_:)))
+//        let tapEndGesture = UITapGestureRecognizer(target: self, action: #selector(tapPressEndAction(_:)))
+//        endButton.addGestureRecognizer(longPressEndGesture)
+//        endButton.addGestureRecognizer(tapEndGesture)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -176,7 +175,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     @objc func tapPressEndAction(_ event: UITapGestureRecognizer) {
         print("please long press to end.")
-        AudioServicesPlaySystemSound(1519)
+//        AudioServicesPlaySystemSound(1519)
         UIView.animate(withDuration: 0.2, animations: {
             self.endButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }) { (finish) in

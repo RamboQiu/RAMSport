@@ -10,7 +10,6 @@ import UIKit
 
 class RAMRunningPauseView: UIButton {
 
-    
     override func draw(_ rect: CGRect) {
         
         guard let context = UIGraphicsGetCurrentContext() else {

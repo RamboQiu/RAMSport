@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import RealmSwift
+import AudioToolbox
 
 class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
@@ -150,12 +151,14 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
         
     @IBAction func beginRun(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1519)
         locationManager.startUpdatingLocation()
         timer.fireDate = Date()
         
     }
     
     @IBAction func pauseRun(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1519)
         locationManager.stopUpdatingLocation()
         
         timer.fireDate = Date.distantFuture

@@ -470,7 +470,7 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQ4-j7-4AV" customClass="RAMRunningInfoView" customModule="RAMSport" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="142" width="375" height="525"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOl-eo-JaJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
@@ -511,8 +511,18 @@
                                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-Ok-4Di">
+                                                <rect key="frame" x="137" y="15" width="100" height="10"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="eho-HW-93d" firstAttribute="leading" secondItem="tOl-eo-JaJ" secondAttribute="leading" id="84z-xC-qDA"/>
                                             <constraint firstItem="6t8-g8-fvJ" firstAttribute="centerY" secondItem="eho-HW-93d" secondAttribute="centerY" id="EyV-A3-rH9"/>
@@ -523,9 +533,9 @@
                                             <constraint firstItem="YdH-N3-gdh" firstAttribute="width" secondItem="eho-HW-93d" secondAttribute="width" id="Rf4-Yh-Fp6"/>
                                             <constraint firstItem="kfs-HE-6zP" firstAttribute="top" secondItem="YdH-N3-gdh" secondAttribute="bottom" id="WnK-DG-2tx"/>
                                             <constraint firstItem="1Qq-MN-EMC" firstAttribute="centerX" secondItem="eho-HW-93d" secondAttribute="centerX" id="XqH-A9-zNP"/>
+                                            <constraint firstAttribute="trailing" secondItem="6t8-g8-fvJ" secondAttribute="trailing" id="ZQM-sq-D86"/>
                                             <constraint firstItem="kfs-HE-6zP" firstAttribute="centerX" secondItem="YdH-N3-gdh" secondAttribute="centerX" id="aDe-BT-DRe"/>
                                             <constraint firstItem="HiA-0s-QV8" firstAttribute="centerX" secondItem="6t8-g8-fvJ" secondAttribute="centerX" id="fSU-si-04b"/>
-                                            <constraint firstItem="6t8-g8-fvJ" firstAttribute="width" secondItem="eho-HW-93d" secondAttribute="width" id="fjL-vX-6Pu"/>
                                             <constraint firstItem="1Qq-MN-EMC" firstAttribute="width" secondItem="eho-HW-93d" secondAttribute="width" id="lnw-hA-550"/>
                                             <constraint firstItem="YdH-N3-gdh" firstAttribute="leading" secondItem="eho-HW-93d" secondAttribute="trailing" id="sH6-u1-fyu"/>
                                             <constraint firstItem="eho-HW-93d" firstAttribute="width" secondItem="tOl-eo-JaJ" secondAttribute="width" multiplier="0.333333" id="vHd-TB-7rn"/>
@@ -536,10 +546,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af5-QY-sOy">
-                                        <rect key="frame" x="0.0" y="125" width="375" height="125"/>
+                                        <rect key="frame" x="0.0" y="125" width="375" height="126.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公里" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhw-lK-drQ">
-                                                <rect key="frame" x="0.0" y="103" width="375" height="22"/>
+                                                <rect key="frame" x="0.0" y="104.5" width="375" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="Gia-QQ-1ZJ"/>
                                                 </constraints>
@@ -548,7 +558,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1G-DD-hef">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -566,7 +576,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-99-cNz" customClass="RAMRunningManuView" customModule="RAMSport" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="257" width="375" height="128"/>
+                                        <rect key="frame" x="0.0" y="263" width="375" height="128"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-Ik-m4f" customClass="RAMRunningStartView" customModule="RAMSport" customModuleProvider="target">
                                                 <rect key="frame" x="19" y="22" width="85" height="85"/>
@@ -595,14 +605,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRF-sS-wVT" customClass="RAMRunningMusicView" customModule="RAMSport" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="430" width="329" height="75"/>
+                                        <rect key="frame" x="23" y="436" width="329" height="75"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="hUd-Gw-2ao"/>
                                         </constraints>
                                     </view>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hl2-gG-Bbf">
-                                        <rect key="frame" x="0.0" y="385" width="375" height="37"/>
+                                        <rect key="frame" x="0.0" y="391" width="375" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="Y2a-Bh-hVN"/>
                                         </constraints>
@@ -636,7 +646,7 @@
                             <constraint firstItem="4uX-fU-qB5" firstAttribute="top" secondItem="Jub-Zc-u0g" secondAttribute="top" id="0Jm-pO-tCx"/>
                             <constraint firstItem="PAw-32-0ae" firstAttribute="bottom" secondItem="JQ4-j7-4AV" secondAttribute="bottom" id="68b-HA-0rv"/>
                             <constraint firstAttribute="trailing" secondItem="4uX-fU-qB5" secondAttribute="trailing" id="6cN-K0-lMJ"/>
-                            <constraint firstItem="JQ4-j7-4AV" firstAttribute="top" secondItem="4uX-fU-qB5" secondAttribute="bottom" constant="-8" id="ar1-r3-8Un"/>
+                            <constraint firstItem="JQ4-j7-4AV" firstAttribute="top" secondItem="4uX-fU-qB5" secondAttribute="bottom" constant="-14" id="ar1-r3-8Un"/>
                             <constraint firstItem="PAw-32-0ae" firstAttribute="trailing" secondItem="JQ4-j7-4AV" secondAttribute="trailing" id="dJE-lo-rpb"/>
                             <constraint firstItem="JQ4-j7-4AV" firstAttribute="leading" secondItem="PAw-32-0ae" secondAttribute="leading" id="hWB-0g-2oS"/>
                             <constraint firstItem="4uX-fU-qB5" firstAttribute="leading" secondItem="Jub-Zc-u0g" secondAttribute="leading" id="vv7-QS-3Y9"/>
@@ -650,6 +660,7 @@
                         <outlet property="endButton" destination="7Re-a3-Pwo" id="hmK-dZ-cVI"/>
                         <outlet property="mapView" destination="4uX-fU-qB5" id="XyI-1S-ilh"/>
                         <outlet property="pauseButton" destination="2Ui-uY-HM0" id="5vp-xS-6Cz"/>
+                        <outlet property="runningInfoView" destination="JQ4-j7-4AV" id="iBl-Xa-8E5"/>
                         <outlet property="speedLabel" destination="eho-HW-93d" id="8n3-xY-f5e"/>
                         <outlet property="startButton" destination="bq3-Ik-m4f" id="x8A-ez-bz1"/>
                         <outlet property="timeLabel" destination="6t8-g8-fvJ" id="hRJ-ef-bsw"/>
@@ -741,7 +752,7 @@
     <resources>
         <image name="avatar" width="960" height="960"/>
         <image name="empty" width="124" height="124"/>
-        <image name="end_button" width="85" height="85"/>
+        <image name="end_button" width="170" height="170"/>
         <image name="ic_settings" width="48" height="48"/>
         <image name="itunes_logo" width="48" height="48"/>
     </resources>

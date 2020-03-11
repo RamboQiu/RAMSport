@@ -23,6 +23,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var pauseButton: RAMRunningPauseView!
     @IBOutlet weak var endButton: RAMRunningEndView!
     @IBOutlet weak var startButton: RAMRunningStartView!
+    @IBOutlet weak var runningInfoView: RAMRunningInfoView!
     
     lazy var realm: Realm! = {
         let r = try! Realm()
@@ -107,9 +108,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     lazy var locationManager: CLLocationManager = {
         let locationM = CLLocationManager()
         locationM.activityType = .fitness
-        locationM.desiredAccuracy = kCLLocationAccuracyBest
+        locationM.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationM.delegate = self
         locationM.allowsBackgroundLocationUpdates = true
+        locationM.pausesLocationUpdatesAutomatically = true
 //        locationM.showsBackgroundLocationIndicator = false
         return locationM
     }()
@@ -131,11 +133,15 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         }
         
         mapView.userTrackingMode = .follow
+        mapView.translatesAutoresizingMaskIntoConstraints = true
         
         pauseButton.layer.cornerRadius = pauseButton.width / 2
         endButton.layer.cornerRadius = endButton.width / 2
         startButton.layer.cornerRadius = startButton.width / 2
         
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panShowMapAction(_:)))
+        runningInfoView.addGestureRecognizer(panGesture)
+        runningInfoView.translatesAutoresizingMaskIntoConstraints = true
 //        let longPressEndGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressEndAction(_:)))
 //        let tapEndGesture = UITapGestureRecognizer(target: self, action: #selector(tapPressEndAction(_:)))
 //        endButton.addGestureRecognizer(longPressEndGesture)
@@ -215,6 +221,94 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         default:
             return
         }
+    }
+    
+    var last: CGFloat = 0.0
+    var originY: CGFloat = 0.0
+    var animated = false
+    
+    @objc func panShowMapAction(_ event: UIPanGestureRecognizer) {
+        if animated {
+            return
+        }
+        if event.state == .began {
+            originY = runningInfoView.y
+        }
+        let velocity = event.velocity(in: event.view?.superview)
+        let translation = event.translation(in: event.view?.superview)
+        // 滑动左右偏差10没关系
+        if abs(translation.x) < 10 {
+            if velocity.y > 500 {
+                // 下滑
+                print("下滑")
+                hiddenInfoViewAnimate()
+            } else if velocity.y < -500 {
+                // 上滑
+                print("上滑")
+                showInfoViewAnimate()
+            } else {
+                if translation.y > 70 {
+                    print("下滑")
+                    hiddenInfoViewAnimate()
+                } else if translation.y < -70 {
+                    print("上滑")
+                    showInfoViewAnimate()
+                } else {
+                    print(translation.y)
+                    moveInfoView(y: translation.y - last)
+                    last = translation.y
+                    if event.state == .cancelled ||
+                       event.state == .ended {
+                        print("回退到原始状态")
+                        last = 0
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 显示info，隐藏详细地图
+    func showInfoViewAnimate() {
+        if animated {
+            return
+        }
+        animated = true
+        var frame = self.mapView.frame
+        frame.size.height = 150
+        UIView.animate(withDuration: 0.3, animations: {
+            self.runningInfoView.y = 142
+            self.mapView.frame = frame
+        }) { (finish) in
+            self.animated = false
+        }
+    }
+    /// 隐藏info，显示详细地图
+    func hiddenInfoViewAnimate() {
+        if animated {
+            return
+        }
+        animated = true
+        var frame = self.mapView.frame
+        frame.size.height = RAMScreenHeight - 42
+        UIView.animate(withDuration: 0.3, animations: {
+            self.runningInfoView.y = RAMScreenHeight - 50
+            self.mapView.frame = frame
+        }) { (finish) in
+            self.animated = false
+        }
+    }
+    /// 本次滑动无效，恢复滑动之前状态
+    func resumeInfoViewAnimate() {
+        
+    }
+    
+    func moveInfoView(y offset: CGFloat) {
+        if animated {
+            return
+        }
+        runningInfoView.y += offset
+//        runningInfoView.transform = CGAffineTransform.translatedBy(<#T##self: CGAffineTransform##CGAffineTransform#>)
+        print("runningInfoView.y \(runningInfoView.y)")
     }
     
     func region(for wpts: List<RAMGPXWptModel>) -> MKCoordinateRegion {
@@ -322,7 +416,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let lineRenderer = MKPolylineRenderer(overlay: overlay)
         lineRenderer.strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        lineRenderer.lineWidth = 4
+        lineRenderer.lineWidth = 2
         return lineRenderer
     }
     
@@ -335,8 +429,8 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
      * https://www.jianshu.com/p/b0ac482fa779
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-//            location = location.locationEarthFromMars()
+        if var location = locations.last {
+            location = location.locationEarthFromMars()
             let coordinate = location.coordinate
             
             if let lastLocation = userPoints.last {
@@ -349,8 +443,11 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
                 } else {
                     downDistance -= altitude
                 }
-                
-                speed = Double(1000 * time) / distance // 每公里耗时速度
+                if distance == 0 {
+                    speed = 0
+                } else {
+                    speed = Double(1000 * time) / distance // 每公里耗时速度
+                }
                 
                 var moveTwo = [CLLocationCoordinate2D]()
                 moveTwo.append(lastLocation.coordinate)
@@ -385,6 +482,31 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+    }
+    
+    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+        pauseRun(pauseButton)
+        // 自动暂停逻辑，离开当前区域就恢复启动
+        if let center = manager.location?.coordinate {
+            let region = CLCircularRegion(center: center, radius: 2.0, identifier: "Headquarters")
+            region.notifyOnEntry = false
+            region.notifyOnExit = true
+            manager.startMonitoring(for: region)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if let region = region as? CLCircularRegion {
+            let identifier = region.identifier
+            if identifier == "Headquarters" {
+                beginRun(startButton)
+                manager.stopMonitoring(for: region)
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
         
     }
 

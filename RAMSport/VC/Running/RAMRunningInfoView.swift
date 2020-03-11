@@ -12,7 +12,7 @@ class RAMRunningInfoView: UIView {
     
     override func draw(_ rect: CGRect) {
         
-        let roundedRect = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 16, height: 16))
+        let roundedRect = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 20, height: 20))
         roundedRect.addClip()
         UIColor.white.setFill()
         roundedRect.fill()

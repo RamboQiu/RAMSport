@@ -29,7 +29,6 @@ class RAMRunningEndView: UIImageView {
     }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("1： \(String(describing: touches.first?.force))")
         timer.resume()
         self.bounds = CGRect(x: 0.0, y: 0.0, width: originWidth, height: originWidth)
     }
@@ -37,7 +36,6 @@ class RAMRunningEndView: UIImageView {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first, !ended {
             let force = touch.force
-            print("2： \(force)")
             self.bounds = CGRect(x: 0.0, y: 0.0, width: originWidth * (1 + force/10), height: originWidth * (1 + force/10))
             if force > 6 {
                 endTouch()
@@ -48,14 +46,12 @@ class RAMRunningEndView: UIImageView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !ended {
             suspend()
-            print("3： \(String(describing: touches.first?.force))")
             self.bounds = CGRect(x: 0.0, y: 0.0, width: originWidth, height: originWidth)
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         suspend()
-        print("4： \(String(describing: touches.first?.force))")
         self.bounds = CGRect(x: 0.0, y: 0.0, width: originWidth, height: originWidth)
         
     }

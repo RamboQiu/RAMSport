@@ -25,7 +25,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var startButton: RAMRunningStartView!
     @IBOutlet weak var runningInfoView: RAMRunningInfoView!
     
-    lazy var realm: Realm! = {
+    
+    var animated = false
+    
+    lazy private(set) var realm: Realm! = {
         let r = try! Realm()
         r.beginWrite()
         return r
@@ -78,14 +81,29 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     var speed: Double = 0.0 {
         didSet {
-            speedLabel.text = "\(String(format: "%.0f", self.speed))"
+            let minute = self.speed / 60
+            let second = self.speed.truncatingRemainder(dividingBy: 60)
+            
+            speedLabel.text = "\(String(format: "%.0f'%.0f''", minute, second))"
             runModel.speed = Int(self.speed)
         }
     }
     
     var time: Int = 0 {
         didSet {
-            timeLabel.text = "\(self.time)"
+            var minute = self.time / 60
+            let hour = minute / 60
+            minute = minute % 60
+            let second = self.time % 60
+            var minuteS = "\(minute)"
+            if minute < 10 {
+                minuteS = "0\(minute)"
+            }
+            var secondS = "\(second)"
+            if second < 10 {
+                secondS = "0\(second)"
+            }
+            timeLabel.text = "\(hour):\(minuteS):\(secondS)"
             runModel.time = self.time
         }
     }
@@ -108,18 +126,16 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     lazy var locationManager: CLLocationManager = {
         let locationM = CLLocationManager()
         locationM.activityType = .fitness
-        locationM.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationM.desiredAccuracy = kCLLocationAccuracyBest
         locationM.delegate = self
         locationM.allowsBackgroundLocationUpdates = true
-        locationM.pausesLocationUpdatesAutomatically = true
-//        locationM.showsBackgroundLocationIndicator = false
+        locationM.pausesLocationUpdatesAutomatically = false
         return locationM
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-                
+        
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
         switch status {
         case .notDetermined:
@@ -133,7 +149,8 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         }
         
         mapView.userTrackingMode = .follow
-        mapView.translatesAutoresizingMaskIntoConstraints = true
+        mapView.width = RAMScreenWidth
+        mapView.height = 0.22 * RAMScreenHeight
         
         pauseButton.layer.cornerRadius = pauseButton.width / 2
         endButton.layer.cornerRadius = endButton.width / 2
@@ -141,11 +158,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panShowMapAction(_:)))
         runningInfoView.addGestureRecognizer(panGesture)
-        runningInfoView.translatesAutoresizingMaskIntoConstraints = true
-//        let longPressEndGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressEndAction(_:)))
-//        let tapEndGesture = UITapGestureRecognizer(target: self, action: #selector(tapPressEndAction(_:)))
-//        endButton.addGestureRecognizer(longPressEndGesture)
-//        endButton.addGestureRecognizer(tapEndGesture)
+        
+        runningInfoView.y = mapView.bottom - 10
+        runningInfoView.width = RAMScreenWidth
+        runningInfoView.height = RAMScreenHeight - runningInfoView.y
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -161,6 +177,9 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         locationManager.startUpdatingLocation()
         timer.fireDate = Date()
         
+        startButton.isHidden = true
+        endButton.isHidden = true
+        pauseButton.isHidden = false
     }
     
     @IBAction func pauseRun(_ sender: UIButton) {
@@ -168,30 +187,21 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         locationManager.stopUpdatingLocation()
         
         timer.fireDate = Date.distantFuture
+        startButton.isHidden = false
+        endButton.isHidden = false
+        pauseButton.isHidden = true
     }
     
     @IBAction func endRun(_ sender: UIButton) {
-//        locationManager.stopUpdatingLocation()
-//        timer.invalidate()
-//        if let wpts = runModel.gpxPath?.trk.first?.trkseg {
-//            mapView.region = region(for: wpts)
-//        }
-//        realm.add(runModel)
-//        try! realm.commitWrite()
-//        
-//        performSegue(withIdentifier: "runningComplete", sender: nil)
-    }
-    
-    @objc func tapPressEndAction(_ event: UITapGestureRecognizer) {
-        print("please long press to end.")
-//        AudioServicesPlaySystemSound(1519)
-        UIView.animate(withDuration: 0.2, animations: {
-            self.endButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) { (finish) in
-            UIView.animate(withDuration: 0.2) {
-                self.endButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }
+        locationManager.stopUpdatingLocation()
+        timer.invalidate()
+        if let wpts = runModel.gpxPath?.trk.first?.trkseg {
+            mapView.region = region(for: wpts)
         }
+        realm.add(runModel)
+        try! realm.commitWrite()
+        
+        performSegue(withIdentifier: "runningComplete", sender: nil)
     }
     
     @objc func longPressEndAction(_ event: UILongPressGestureRecognizer) {
@@ -223,16 +233,9 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         }
     }
     
-    var last: CGFloat = 0.0
-    var originY: CGFloat = 0.0
-    var animated = false
-    
     @objc func panShowMapAction(_ event: UIPanGestureRecognizer) {
         if animated {
             return
-        }
-        if event.state == .began {
-            originY = runningInfoView.y
         }
         let velocity = event.velocity(in: event.view?.superview)
         let translation = event.translation(in: event.view?.superview)
@@ -240,29 +243,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         if abs(translation.x) < 10 {
             if velocity.y > 500 {
                 // 下滑
-                print("下滑")
                 hiddenInfoViewAnimate()
             } else if velocity.y < -500 {
                 // 上滑
-                print("上滑")
                 showInfoViewAnimate()
-            } else {
-                if translation.y > 70 {
-                    print("下滑")
-                    hiddenInfoViewAnimate()
-                } else if translation.y < -70 {
-                    print("上滑")
-                    showInfoViewAnimate()
-                } else {
-                    print(translation.y)
-                    moveInfoView(y: translation.y - last)
-                    last = translation.y
-                    if event.state == .cancelled ||
-                       event.state == .ended {
-                        print("回退到原始状态")
-                        last = 0
-                    }
-                }
             }
         }
     }
@@ -296,19 +280,6 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         }) { (finish) in
             self.animated = false
         }
-    }
-    /// 本次滑动无效，恢复滑动之前状态
-    func resumeInfoViewAnimate() {
-        
-    }
-    
-    func moveInfoView(y offset: CGFloat) {
-        if animated {
-            return
-        }
-        runningInfoView.y += offset
-//        runningInfoView.transform = CGAffineTransform.translatedBy(<#T##self: CGAffineTransform##CGAffineTransform#>)
-        print("runningInfoView.y \(runningInfoView.y)")
     }
     
     func region(for wpts: List<RAMGPXWptModel>) -> MKCoordinateRegion {
@@ -344,74 +315,16 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
 ////        mapView.setRegion(region, animated: true)
 //    }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-        // ------- 自带的大头针-----
-        var annotationView: MKMarkerAnnotationView!
-        if let annotationViewTmp: MKMarkerAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "mark") as? MKMarkerAnnotationView {
-            annotationView = annotationViewTmp
-        } else {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "mark")
-        }
-//             UIImageView *imageView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation is MKUserLocation {
+//            return nil
+//        }
+//        // TODO: 添加自制大头针
+//    }
 //
-//            imageView.frame=CGRectMake(0,0,50,50);
-//
-//            annotationView.leftCalloutAccessoryView=imageView;
-
-        annotationView.canShowCallout = true;
-//        annotationView.animatesDrop = true;
-
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30));
-
-        label.text = ">>";
-        
-        annotationView.rightCalloutAccessoryView = label;
-
-//        annotationView.pinTintColor = .purple;
-
-        return annotationView;
-
-//         自定义大头针-------
-
-//          static NSString *pinId = "pinID";
-//
-//          MKAnnotationView *annoView = [mapView  dequeueReusableAnnotationViewWithIdentifier:pinId];
-//
-//          if (annoView == nil) {
-//
-//        annoView = [[MKAnnotationView alloc] initWithAnnotation:annotation  reuseIdentifier:pinId];
-//
-//          }
-//
-//        annoView.annotation = annotation;
-//
-//          annoView.image = [UIImage imageNamed:@"2.jpg"];
-//
-//        annoView.canShowCallout = YES;
-//
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2.jpg"]];
-//
-//        imageView.bounds = CGRectMake(0, 0, 44, 44);
-//
-//        annoView.leftCalloutAccessoryView = imageView;    imageView.userInteractionEnabled  = YES;
-//
-//                UIImageView *imageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2.jpg"]];
-//
-//          imageView2.bounds = CGRectMake(0, 0, 44, 44);
-//
-//            annoView.rightCalloutAccessoryView = imageView2;
-//
-//          annoView.draggable = YES;
-//
-//          return annoView;
-    }
-    
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        // TODO: 设置指向箭头 https://www.jianshu.com/p/9416839138e8
-    }
+//    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+//        // TODO: 设置指向箭头 https://www.jianshu.com/p/9416839138e8
+//    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let lineRenderer = MKPolylineRenderer(overlay: overlay)
@@ -429,8 +342,10 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
      * https://www.jianshu.com/p/b0ac482fa779
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if var location = locations.last {
-            location = location.locationEarthFromMars()
+        if let location = locations.last {
+//            location = location.locationEarthFromMars()
+            print(location)
+            
             let coordinate = location.coordinate
             
             if let lastLocation = userPoints.last {
@@ -485,29 +400,31 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         
     }
     
-    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        pauseRun(pauseButton)
-        // 自动暂停逻辑，离开当前区域就恢复启动
-        if let center = manager.location?.coordinate {
-            let region = CLCircularRegion(center: center, radius: 2.0, identifier: "Headquarters")
-            region.notifyOnEntry = false
-            region.notifyOnExit = true
-            manager.startMonitoring(for: region)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if let region = region as? CLCircularRegion {
-            let identifier = region.identifier
-            if identifier == "Headquarters" {
-                beginRun(startButton)
-                manager.stopMonitoring(for: region)
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        
-    }
+//    ///如果你让设备在同一地点约15分钟应该发生 http://cn.voidcc.com/question/p-qpuamcrm-bcx.html
+    // TODO: 自动暂停的思考 实现判断多长时间内都没有离开一个区域，认为是暂停了
+//    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+//        pauseRun(pauseButton)
+//        // 自动暂停逻辑，离开当前区域就恢复启动
+//        if let center = manager.location?.coordinate {
+//            let region = CLCircularRegion(center: center, radius: 2.0, identifier: "Headquarters")
+//            region.notifyOnEntry = false
+//            region.notifyOnExit = true
+//            manager.startMonitoring(for: region)
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//        if let region = region as? CLCircularRegion {
+//            let identifier = region.identifier
+//            if identifier == "Headquarters" {
+//                beginRun(startButton)
+//                manager.stopMonitoring(for: region)
+//            }
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+//
+//    }
 
 }

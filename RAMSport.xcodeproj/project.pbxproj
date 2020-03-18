@@ -48,6 +48,7 @@
 		41548F6223F434EE0055E981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41548F6023F434EE0055E981 /* LaunchScreen.storyboard */; };
 		41790D3023FED24E0091E82B /* RAMSportMainCenterCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790D2F23FED24E0091E82B /* RAMSportMainCenterCircleView.swift */; };
 		41790D3E23FFB1340091E82B /* RAMSportMainCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41790D3D23FFB1340091E82B /* RAMSportMainCurveView.swift */; };
+		4193476E2418E82E0092A0A2 /* RAMRunningMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193476D2418E82E0092A0A2 /* RAMRunningMapModel.swift */; };
 		41A33FE223FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A33FE123FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift */; };
 		41A33FE523FFD6A200B9D175 /* RAMSportMainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A33FE423FFD6A200B9D175 /* RAMSportMainAddView.swift */; };
 		41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */; };
@@ -111,6 +112,7 @@
 		41548F6323F434EE0055E981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41790D2F23FED24E0091E82B /* RAMSportMainCenterCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainCenterCircleView.swift; sourceTree = "<group>"; };
 		41790D3D23FFB1340091E82B /* RAMSportMainCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainCurveView.swift; sourceTree = "<group>"; };
+		4193476D2418E82E0092A0A2 /* RAMRunningMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningMapModel.swift; sourceTree = "<group>"; };
 		41A33FE123FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainRecordGraphView.swift; sourceTree = "<group>"; };
 		41A33FE423FFD6A200B9D175 /* RAMSportMainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainAddView.swift; sourceTree = "<group>"; };
 		41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXAnalysis.swift; sourceTree = "<group>"; };
@@ -228,15 +230,16 @@
 		41343E8E2400DCC10016A82F /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				4121B07523FA70C2002CF1DA /* RAMRunningController.swift */,
+				4193476C2418E8080092A0A2 /* Model */,
 				4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */,
 				41343E8F2400F8440016A82F /* RAMRunningInfoView.swift */,
 				41343E97240220670016A82F /* RAMRunningManuView.swift */,
 				41343E9124021CB40016A82F /* RAMRunningPauseView.swift */,
 				41343E9324021CC50016A82F /* RAMRunningStartView.swift */,
 				41343E9524021CD00016A82F /* RAMRunningEndView.swift */,
-				41343E99240221020016A82F /* RAMRunningPageControlView.swift */,
 				41343E9B240221140016A82F /* RAMRunningMusicView.swift */,
+				41343E99240221020016A82F /* RAMRunningPageControlView.swift */,
+				4121B07523FA70C2002CF1DA /* RAMRunningController.swift */,
 				4121B07923FA79FD002CF1DA /* RAMRunningDetailController.swift */,
 			);
 			path = Running;
@@ -274,6 +277,14 @@
 				4121B08D23FD5BD3002CF1DA /* Supporting Files */,
 			);
 			path = RAMSport;
+			sourceTree = "<group>";
+		};
+		4193476C2418E8080092A0A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4193476D2418E82E0092A0A2 /* RAMRunningMapModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		41A33FE323FFD65B00B9D175 /* Main */ = {
@@ -509,6 +520,7 @@
 				4121B09723FE6C18002CF1DA /* RAMMacros.swift in Sources */,
 				41343E9A240221020016A82F /* RAMRunningPageControlView.swift in Sources */,
 				41548F5623F434EB0055E981 /* AppDelegate.swift in Sources */,
+				4193476E2418E82E0092A0A2 /* RAMRunningMapModel.swift in Sources */,
 				4121B09123FD7D40002CF1DA /* RAMDetailController.swift in Sources */,
 				41343E9C240221140016A82F /* RAMRunningMusicView.swift in Sources */,
 				4121B09F23FE89FB002CF1DA /* RAMDetailMapController.swift in Sources */,

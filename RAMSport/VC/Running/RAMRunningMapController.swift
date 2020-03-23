@@ -103,7 +103,11 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
             if second < 10 {
                 secondS = "0\(second)"
             }
-            timeLabel.text = "\(hour):\(minuteS):\(secondS)"
+            if hour > 0 {
+                timeLabel.text = "\(hour):\(minuteS):\(secondS)"
+            } else {
+                timeLabel.text = "\(minuteS):\(secondS)"
+            }
             runModel.time = self.time
         }
     }

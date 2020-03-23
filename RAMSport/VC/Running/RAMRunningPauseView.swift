@@ -30,7 +30,15 @@ class RAMRunningPauseView: UIButton {
         endPoint = CGPoint(x: rect.width / 2 + 8, y: rect.height - CGFloat(offset))
         path.addLine(to: endPoint)
         
-        UIColor.white.setStroke()
+        if #available(iOS 12, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                UIColor.black.setStroke()
+            } else {
+                UIColor.white.setStroke()
+            }
+        } else {
+            UIColor.white.setStroke()
+        }
         context.setLineWidth(6)
         context.addPath(path.cgPath)
         context.setLineCap(.round)

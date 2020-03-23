@@ -29,8 +29,19 @@ class RAMRunningStartView: UIButton {
         path.addLine(to: startPoint)
         path.addLine(to: endPoint)
         
-        UIColor.white.setStroke()
-        UIColor.white.setFill()
+        
+        if #available(iOS 12, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                UIColor.black.setStroke()
+                UIColor.black.setFill()
+            } else {
+                UIColor.white.setStroke()
+                UIColor.white.setFill()
+            }
+        } else {
+            UIColor.white.setStroke()
+            UIColor.white.setFill()
+        }
         path.lineWidth = 6
         path.lineJoinStyle = .round
         path.lineCapStyle = .round

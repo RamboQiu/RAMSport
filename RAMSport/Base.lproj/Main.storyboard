@@ -321,7 +321,7 @@
                         <outlet property="manuView" destination="Qha-Fd-k0b" id="jDP-BP-reT"/>
                         <outlet property="mapView" destination="Ggm-he-B3r" id="XrH-5P-deY"/>
                         <outlet property="recordGraphView" destination="GTB-BI-xHY" id="Ydj-VN-bxZ"/>
-                        <segue destination="o1U-Io-OnT" kind="show" identifier="running" id="Fnb-xx-CSX"/>
+                        <segue destination="o1U-Io-OnT" kind="custom" identifier="running" customClass="RAMRunningSegue" customModule="RAMSport" customModuleProvider="target" id="Fnb-xx-CSX"/>
                         <segue destination="sJC-MG-19m" kind="show" identifier="record" id="UvI-Pv-Lq2"/>
                     </connections>
                 </viewController>
@@ -643,11 +643,11 @@
             <objects>
                 <viewController id="h7w-HE-Vf4" customClass="RAMDetailController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZK-v9-4mG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CQP-cH-uqc">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="h7w-HE-Vf4" id="Jhq-X0-LTo"/>
@@ -679,7 +679,7 @@
             <objects>
                 <viewController id="USX-hC-wj2" customClass="RAMDetailMapController" customModule="RAMSport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FEb-ML-vkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rBe-eZ-cjJ"/>

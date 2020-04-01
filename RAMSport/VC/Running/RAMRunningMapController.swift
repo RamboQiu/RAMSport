@@ -11,6 +11,8 @@ import MapKit
 import CoreLocation
 import RealmSwift
 import AudioToolbox
+import RxSwift
+import RxCocoa
 
 class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
 
@@ -25,6 +27,8 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var startButton: RAMRunningStartView!
     @IBOutlet weak var runningInfoView: RAMRunningInfoView!
     
+    
+    let disposeBag = DisposeBag()
     
     var animated = false
     
@@ -166,6 +170,16 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         runningInfoView.y = mapView.bottom - 10
         runningInfoView.width = RAMScreenWidth
         runningInfoView.height = RAMScreenHeight - runningInfoView.y
+        
+        self.rx
+            .observe(Bool.self, "endButton.ended")
+            .subscribe(onNext: { (ended) in
+                if ended ?? false {
+                    self.endRun()
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -196,7 +210,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         pauseButton.isHidden = true
     }
     
-    @IBAction func endRun(_ sender: UIButton) {
+    func endRun() {
         locationManager.stopUpdatingLocation()
         timer.invalidate()
         if let wpts = runModel.gpxPath?.trk.first?.trkseg {

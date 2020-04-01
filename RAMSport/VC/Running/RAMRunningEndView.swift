@@ -8,11 +8,13 @@
 
 import UIKit
 import AudioToolbox
+import RxSwift
+import RxCocoa
 
 class RAMRunningEndView: UIImageView {
     
     let originWidth: CGFloat = 85.0
-    var ended = false
+    @objc dynamic var ended = false
     var millCount = 0
     lazy var timer: DispatchSourceTimer = {
         let t = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
@@ -63,12 +65,14 @@ class RAMRunningEndView: UIImageView {
     
     func endTouch() {
         if !ended {
-            ended = true
             timer.cancel()
             AudioServicesPlaySystemSound(1519)
             self.isUserInteractionEnabled = false
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.2, animations: {
                 self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            }) { (complete) in
+                /// rxswift 实现的观察者模式监听改变的
+                self.ended = true                
             }
         }
     }

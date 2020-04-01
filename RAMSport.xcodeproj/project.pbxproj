@@ -51,6 +51,8 @@
 		4193476E2418E82E0092A0A2 /* RAMRunningMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4193476D2418E82E0092A0A2 /* RAMRunningMapModel.swift */; };
 		41A33FE223FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A33FE123FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift */; };
 		41A33FE523FFD6A200B9D175 /* RAMSportMainAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A33FE423FFD6A200B9D175 /* RAMSportMainAddView.swift */; };
+		41A5B89124289D7C00E3AF38 /* RAMRunningSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5B89024289D7C00E3AF38 /* RAMRunningSegue.swift */; };
+		41A5B8932428B2E000E3AF38 /* RAMRunningDismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A5B8922428B2E000E3AF38 /* RAMRunningDismissSegue.swift */; };
 		41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */; };
 		41A7400423F67CC6008637CD /* letoursport30.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 41A7400323F67CC6008637CD /* letoursport30.gpx */; };
 		41A7400C23F68767008637CD /* RAMSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7400B23F68767008637CD /* RAMSportTests.swift */; };
@@ -115,6 +117,8 @@
 		4193476D2418E82E0092A0A2 /* RAMRunningMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningMapModel.swift; sourceTree = "<group>"; };
 		41A33FE123FFCB9600B9D175 /* RAMSportMainRecordGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainRecordGraphView.swift; sourceTree = "<group>"; };
 		41A33FE423FFD6A200B9D175 /* RAMSportMainAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMSportMainAddView.swift; sourceTree = "<group>"; };
+		41A5B89024289D7C00E3AF38 /* RAMRunningSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningSegue.swift; sourceTree = "<group>"; };
+		41A5B8922428B2E000E3AF38 /* RAMRunningDismissSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMRunningDismissSegue.swift; sourceTree = "<group>"; };
 		41A73FFF23F676EC008637CD /* RAMGPXAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXAnalysis.swift; sourceTree = "<group>"; };
 		41A7400123F67790008637CD /* RAMGPXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAMGPXModel.swift; sourceTree = "<group>"; };
 		41A7400323F67CC6008637CD /* letoursport30.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = letoursport30.gpx; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 			children = (
 				4193476C2418E8080092A0A2 /* Model */,
 				4121B07723FA79EA002CF1DA /* RAMRunningMapController.swift */,
+				41A5B89024289D7C00E3AF38 /* RAMRunningSegue.swift */,
+				41A5B8922428B2E000E3AF38 /* RAMRunningDismissSegue.swift */,
 				41343E8F2400F8440016A82F /* RAMRunningInfoView.swift */,
 				41343E97240220670016A82F /* RAMRunningManuView.swift */,
 				41343E9124021CB40016A82F /* RAMRunningPauseView.swift */,
@@ -506,6 +512,7 @@
 				4121B08C23FD229C002CF1DA /* RAMMonthRunModel.swift in Sources */,
 				41A7400023F676EC008637CD /* RAMGPXAnalysis.swift in Sources */,
 				41790D3E23FFB1340091E82B /* RAMSportMainCurveView.swift in Sources */,
+				41A5B8932428B2E000E3AF38 /* RAMRunningDismissSegue.swift in Sources */,
 				4121B09923FE736D002CF1DA /* RAMStaticTableCellData.swift in Sources */,
 				4121B08423FCD8E5002CF1DA /* RAMRecordSectionHeaderView.swift in Sources */,
 				41548F5A23F434EB0055E981 /* RAMSportMainController.swift in Sources */,
@@ -524,6 +531,7 @@
 				4121B09123FD7D40002CF1DA /* RAMDetailController.swift in Sources */,
 				41343E9C240221140016A82F /* RAMRunningMusicView.swift in Sources */,
 				4121B09F23FE89FB002CF1DA /* RAMDetailMapController.swift in Sources */,
+				41A5B89124289D7C00E3AF38 /* RAMRunningSegue.swift in Sources */,
 				4121B08623FD1043002CF1DA /* RAMUserModel.swift in Sources */,
 				41343E9624021CD00016A82F /* RAMRunningEndView.swift in Sources */,
 				41A33FE523FFD6A200B9D175 /* RAMSportMainAddView.swift in Sources */,

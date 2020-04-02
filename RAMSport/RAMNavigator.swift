@@ -33,6 +33,17 @@ extension UIViewController {
         self.navigationController?.navigationBar.ram_setBackGroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
         self.navigationController?.navigationBar.ram_shadowImage(setHidden: true)
     }
+    
+    func applyWhiteNavigationBarStyle() {
+        if #available(iOS 13.0, *) {
+            ram_statusBarStyle = .darkContent
+        } else {
+            ram_statusBarStyle = .default
+        }
+        self.navigationController?.navigationBar.ram_setBackGroundColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)]
+        self.navigationController?.navigationBar.ram_setDefaultBottomLine()
+    }
 }
 
 extension UINavigationBar {
@@ -56,5 +67,9 @@ extension UINavigationBar {
                 lineView.isHidden = hidden;
             }
         }
+    }
+    
+    func ram_setDefaultBottomLine() {
+        self.shadowImage = UIImage.image(withColor: UIColor.gray, pixSize: CGSize(width: RAMScreenWidth, height: 1))
     }
 }

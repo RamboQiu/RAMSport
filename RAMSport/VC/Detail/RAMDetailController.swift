@@ -30,13 +30,14 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
                 array.remove(at: array.count - 2)
                 self.navigationController?.viewControllers = array
             }
+            
         }
         setUI()
         
     }
     
     func setUI() {
-        applyClearNavigationBarStyle()
+        applyWhiteNavigationBarStyle()
         
         let dateData = RAMStaticTableCellData()
         dateData.cellClass = RAMDetailDateTableViewCell.self

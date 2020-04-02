@@ -158,7 +158,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         
         mapView.userTrackingMode = .follow
         mapView.width = RAMScreenWidth
-        mapView.height = 0.22 * RAMScreenHeight
+        mapView.height = RAMScreenHeight
         
         pauseButton.layer.cornerRadius = pauseButton.width / 2
         endButton.layer.cornerRadius = endButton.width / 2
@@ -166,8 +166,8 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panShowMapAction(_:)))
         runningInfoView.addGestureRecognizer(panGesture)
-        
-        runningInfoView.y = mapView.bottom - 10
+
+        runningInfoView.y = 142
         runningInfoView.width = RAMScreenWidth
         runningInfoView.height = RAMScreenHeight - runningInfoView.y
         
@@ -275,11 +275,11 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
             return
         }
         animated = true
-        var frame = self.mapView.frame
-        frame.size.height = 150
+//        var frame = self.mapView.frame
+//        frame.size.height = 150
         UIView.animate(withDuration: 0.3, animations: {
             self.runningInfoView.y = 142
-            self.mapView.frame = frame
+//            self.mapView.frame = frame
         }) { (finish) in
             self.animated = false
         }
@@ -290,11 +290,11 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
             return
         }
         animated = true
-        var frame = self.mapView.frame
-        frame.size.height = RAMScreenHeight - 42
+//        var frame = self.mapView.frame
+//        frame.size.height = RAMScreenHeight - 42
         UIView.animate(withDuration: 0.3, animations: {
             self.runningInfoView.y = RAMScreenHeight - 50
-            self.mapView.frame = frame
+//            self.mapView.frame = frame
         }) { (finish) in
             self.animated = false
         }

@@ -110,8 +110,6 @@ extension UIView {
             return ram_addLine(at: position, left: CGFloat.leastNormalMagnitude, right: CGFloat.leastNormalMagnitude)
         case .AtLeft, .AtRight:
             return ram_addLine(at: position, top: CGFloat.leastNormalMagnitude, bottom: CGFloat.leastNormalMagnitude)
-        default:
-            return ram_line()
         }
     }
     
@@ -133,8 +131,6 @@ extension UIView {
             _ram_getLine(by: RAMViewLineAssociatedKeys.kRightLineKey).removeFromSuperview()
         case .AtLeft:
             _ram_getLine(by: RAMViewLineAssociatedKeys.kLeftLineKey).removeFromSuperview()
-        default:
-            return
         }
     }
 }

@@ -68,11 +68,11 @@ class RAMRunningEndView: UIImageView {
             timer.cancel()
             AudioServicesPlaySystemSound(1519)
             self.isUserInteractionEnabled = false
-            UIView.animate(withDuration: 0.2, animations: {
+            /// rxswift 实现的观察者模式监听改变的
+            self.ended = true
+            UIView.animate(withDuration: 0.25, animations: {
                 self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             }) { (complete) in
-                /// rxswift 实现的观察者模式监听改变的
-                self.ended = true                
             }
         }
     }

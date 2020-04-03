@@ -19,7 +19,7 @@ class RAMAlphaPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         transitionContext.containerView.addSubview(destination!)
         transitionContext.containerView.addSubview(source!)
         destination?.alpha = 0
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             destination?.alpha = 1
             source?.alpha = 0
         }) { (complete) in

@@ -24,7 +24,6 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyClearNavigationBarStyle()
         
         mapView.userTrackingMode = .follow
         
@@ -57,6 +56,11 @@ class RAMSportMainController: UIViewController, MKMapViewDelegate {
         default:
             locationManager.requestWhenInUseAuthorization()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyClearNavigationBarStyle()
     }
     
     override func viewDidLayoutSubviews() {

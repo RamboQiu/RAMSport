@@ -185,6 +185,7 @@ class RAMRunningMapController: UIViewController, MKMapViewDelegate, CLLocationMa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "runningComplete" {
             if let vc = segue.destination as? RAMDetailController {
+                vc.runModel = runModel
                 vc.from = .running
             }
         }

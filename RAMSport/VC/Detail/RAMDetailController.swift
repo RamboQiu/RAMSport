@@ -19,6 +19,8 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     var staticList = [RAMStaticTableCellData]()
     
     var from: RAMDetailFrom = .record
+    
+    var runModel: RAMRunModel?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,9 +32,9 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
                 array.remove(at: array.count - 2)
                 self.navigationController?.viewControllers = array
             }
-            applyWhiteNavigationBarStyle(false)
+            _ = applyWhiteNavigationBarStyle(false)
         } else {
-            applyWhiteNavigationBarStyle(true)
+            _ = applyWhiteNavigationBarStyle(true)
         }
         setUI()
         

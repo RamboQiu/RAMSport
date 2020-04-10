@@ -90,3 +90,17 @@ extension UIColor {
         return self.cgColor.alpha
     }
 }
+
+extension Float {
+
+    /// 返回末尾不带0的小数
+    var clearString: String {
+        if fmodf(Float(self), 1) == 0 {
+            return String(format: "%.0f", self)
+        } else if fmodf(Float(self * 10), 1) == 0 {
+            return String(format: "%.1f", self)
+        } else {
+            return String(format: "%.2f", self)
+        }
+    }
+}

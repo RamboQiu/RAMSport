@@ -71,7 +71,7 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func custom(infoCell cell: RAMDetailInfoTableViewCell, with data:RAMStaticTableCellData) {
-        cell.distance = 1217.999
+        cell.distance = 1217.00
         cell.speedLabel.text = "6'52''"
         cell.timeLabel.text = "52:23"
         cell.kaluliLabel.text = "2323232322"

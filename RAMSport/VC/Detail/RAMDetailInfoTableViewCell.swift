@@ -19,7 +19,7 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
     
     var distance = 0.0 {
         didSet {
-            distanceLabel.text = String(format: "%.2f", self.distance)
+            distanceLabel.text = Float(self.distance).clearString
             distanceLabel.sizeToFit()
             distanceLabel.snp.updateConstraints { (make) in
                 make.width.equalTo(self.distanceLabel.width)
@@ -49,14 +49,14 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         contentView.addSubview(distanceLabel)
         distanceLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(10)
             make.width.equalTo(40)
             make.height.equalTo(70)
         }
         contentView.addSubview(distanceDescLabel)
         distanceDescLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.distanceLabel.snp.right).offset(5)
-            make.bottom.equalTo(self.distanceLabel)
+            make.bottom.equalTo(self.distanceLabel).offset(-12)
             make.width.equalTo(self.distanceDescLabel.width)
             make.height.equalTo(self.distanceDescLabel.height)
         }
@@ -64,14 +64,14 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         contentView.addSubview(speedLabel)
         speedLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
-            make.top.equalTo(self.distanceLabel.snp.bottom).offset(20)
+            make.top.equalTo(self.distanceLabel.snp.bottom).offset(5)
             make.width.equalTo((RAMScreenWidth-50)/3)
             make.height.equalTo(30)
         }
         contentView.addSubview(speedDescLabel)
         speedDescLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
-            make.top.equalTo(self.speedLabel.snp.bottom).offset(5)
+            make.left.equalTo(self.speedLabel)
+            make.top.equalTo(self.speedLabel.snp.bottom)
             make.width.equalTo(self.speedLabel)
             make.height.equalTo(20)
         }
@@ -83,7 +83,7 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         }
         contentView.addSubview(timeDescLabel)
         timeDescLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.speedDescLabel.snp.right).offset(5)
+            make.left.equalTo(self.timeLabel)
             make.top.width.height.equalTo(self.speedDescLabel)
         }
         
@@ -94,7 +94,7 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         }
         contentView.addSubview(kaluliDescLabel)
         kaluliDescLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.timeDescLabel.snp.right).offset(5)
+            make.left.equalTo(self.kaluliLabel)
             make.top.width.height.equalTo(self.speedDescLabel)
         }
         
@@ -103,13 +103,13 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         contentView.addSubview(upLabel)
         upLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
-            make.top.equalTo(self.speedDescLabel.snp.bottom).offset(20)
+            make.top.equalTo(self.speedDescLabel.snp.bottom).offset(10)
             make.width.height.equalTo(self.speedLabel)
         }
         contentView.addSubview(upDescLabel)
         upDescLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
-            make.top.equalTo(self.upLabel.snp.bottom).offset(5)
+            make.left.equalTo(self.upLabel)
+            make.top.equalTo(self.upLabel.snp.bottom)
             make.width.height.equalTo(self.speedDescLabel)
         }
         
@@ -120,7 +120,7 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
         }
         contentView.addSubview(downDescLabel)
         downDescLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.upDescLabel.snp.right).offset(5)
+            make.left.equalTo(self.downLabel)
             make.top.width.height.equalTo(self.upDescLabel)
         }
         
@@ -146,7 +146,7 @@ class RAMDetailInfoTableViewCell: UITableViewCell {
     }
     
     class func cellHeight() -> CGFloat {
-        return 300
+        return 207
     }
 
 }

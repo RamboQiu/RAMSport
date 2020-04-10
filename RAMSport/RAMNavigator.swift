@@ -118,6 +118,6 @@ extension UINavigationBar {
     }
     
     func ram_setDefaultBottomLine() {
-        self.shadowImage = UIImage.image(withColor: UIColor.gray, pixSize: CGSize(width: RAMScreenWidth, height: 1))
+        self.shadowImage = UIImage.image(withColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), pixSize: CGSize(width: RAMScreenWidth, height: 1))
     }
 }

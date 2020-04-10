@@ -26,7 +26,7 @@ extension UIView {
     }
     
     func ram_line() -> UIView {
-        let image = UIImage.image(withColor: UIColor.gray)
+        let image = UIImage.image(withColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1))
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 0, y: 0, width: RAM_SINGLE_LINE_WIDTH, height: RAM_SINGLE_LINE_WIDTH)
         return imageView

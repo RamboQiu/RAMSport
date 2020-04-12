@@ -40,6 +40,7 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    // MARK: - Load UI
     func setUI() {
         
         let dateData = RAMStaticTableCellData()
@@ -73,8 +74,14 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func custom(infoCell cell: RAMDetailInfoTableViewCell, with data:RAMStaticTableCellData) {
-        cell.distance = 1217.00
+        cell.distance = runModel?.distance ?? 0
         cell.speedLabel.text = "6'52''"
+
+        let minute = self.speed / 60
+        let second = self.speed.truncatingRemainder(dividingBy: 60)
+        
+        speedLabel.text = "\(String(format: "%.0f'%.0f''", minute, second))"
+        runModel.speed = Int(self.speed)
         cell.timeLabel.text = "52:23"
         cell.kaluliLabel.text = "2323232322"
         cell.upLabel.text = "24m"
@@ -82,9 +89,12 @@ class RAMDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func custom(mapCell cell: RAMDetailMapTableViewCell, with data:RAMStaticTableCellData) {
-        
+        cell.gpxModel = runModel!.gpxPath!
     }
+    // MARK: - Private Methods
     
+    
+    // MARK: - TableView Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return staticList.count
     }
